@@ -12,8 +12,6 @@ export const TagList = () => {
         getAllTags();
     }, []);
 
-
-
     const constructNewTag = () => {
         addTag({
             name: name.current.value,
@@ -36,15 +34,13 @@ export const TagList = () => {
                     <button type="submit"
                         onClick={
                             evt => {
-                                evt.preventDefault() // Prevent browser from submitting the form
-                                constructNewTag()
-                                setTagInput(false)
-                            }
-                        }
+                                evt.preventDefault()
+                                    constructNewTag()
+                                        setTagInput(false)}}
                         className="btn btn-primary">
-                        Save Tag
-            </button>
-                </div>)
+                        Save Tag</button>
+                        </div>
+                )
         }
     }
 
@@ -56,19 +52,16 @@ export const TagList = () => {
                     onClick={
                         evt => {
                             evt.preventDefault() // Prevent browser from submitting the form
-                            setTagInput(true)
+                                setTagInput(true)
                         }
                     }
                     className="btn btn-primary">
-                    Add a Tag
-            </button>
+                    Add a Tag</button>
             </div>
-
             <div>{displayTagInput()}</div>
-
             <div className="yagContainer">
-            {tags.map(t =>
-                <Tag key={t.id} tag={t} />)}
+                {tags.map(t =>
+                    <Tag key={t.id} tag={t} />)}
             </div>
         </section>
     );
