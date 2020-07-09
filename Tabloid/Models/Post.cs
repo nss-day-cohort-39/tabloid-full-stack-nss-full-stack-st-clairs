@@ -19,6 +19,9 @@ namespace Tabloid.Models
 
         [Required]
         public DateTime CreateDateTime { get; set; }
+        
+        [Required]
+        public DateTime PublishDateTime { get; set; }
 
         public bool IsApproved { get; set; }
 
@@ -31,6 +34,6 @@ namespace Tabloid.Models
 
         public UserProfile UserProfile { get; set; }
 
-        public List<Comment> comments { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

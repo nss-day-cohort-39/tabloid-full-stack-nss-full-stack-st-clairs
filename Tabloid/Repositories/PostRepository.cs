@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Tabloid.Data;
 using Tabloid.Models;
-
+using System;
 
 namespace Tabloid.Repositories
 {
@@ -16,20 +16,26 @@ namespace Tabloid.Repositories
             _context = context;
         }
 
+
         public List<Post> GetAll()
         {
-            return _context.Post.Include(p => p.UserProfile).Include(p => p.comments).OrderByDescending(p => p.CreateDateTime).ToList();
+            return _context.Post
+                .Include(p => p.UserProfile)
+                .Include(p => p.Comments)
+                .OrderByDescending(p => p.CreateDateTime)
+                .Where(p => p.IsApproved == true && p.PublishDateTime < DateTime.Now)
+                .ToList();
         }
 
         public Post GetById(int id)
         {
-            return _context.Post.Include(p => p.UserProfile).Include(p => p.comments).FirstOrDefault(p => p.Id == id);
+            return _context.Post.Include(p => p.UserProfile).Include(p => p.Comments).FirstOrDefault(p => p.Id == id);
         }
 
         public List<Post> GetByUserProfileId(int id)
         {
             return _context.Post.Include(p => p.UserProfile)
-                            .Include(p => p.comments)
+                            .Include(p => p.Comments)
                             .Where(p => p.UserProfileId == id)
                             .OrderBy(p => p.Title)
                             .ToList();
