@@ -4,6 +4,7 @@ import { UserProfileContext } from "../providers/UserProfileProvider";
 import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
+import { PostList } from "./PostList";
 import { TagList } from "../components/Tag/TagList";
 import CategoryList from "./CategoryList";
 
@@ -15,6 +16,10 @@ export default function ApplicationViews() {
       <Switch>
         <Route path="/" exact>
           {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/posts" exact>
+          {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">
