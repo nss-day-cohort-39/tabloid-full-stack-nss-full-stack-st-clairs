@@ -5,6 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
 import { TagList } from "../components/Tag/TagList";
+import CategoryList from "./CategoryList";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -24,8 +25,8 @@ export default function ApplicationViews() {
           <Register />
         </Route>
 
-        <Route path="/categories">
-          <TagList />
+        <Route path="/category">
+          <CategoryList />
         </Route>
 
         <Route path="/tags">

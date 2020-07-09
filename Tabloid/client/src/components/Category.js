@@ -1,12 +1,12 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
 
 const Category = ({ category }) => {
+    // debugger
     return (
-        <Card className="m-4">
+        <Card>
             <CardBody>
-                <strong>{category.Name}</strong>
+                <p>{category.name}</p>
             </CardBody>
         </Card>
     );
