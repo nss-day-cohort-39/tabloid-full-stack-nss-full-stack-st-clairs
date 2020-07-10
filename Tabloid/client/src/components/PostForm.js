@@ -5,19 +5,19 @@ import { useHistory } from 'react-router-dom'
 export default props => {
   const { addPost, posts } = useContext(PostContext)
   const title = useRef('title')
+  const content = useRef('content')
+  const category = useRef('category')
   const imageUrl = useRef('imageUrl')
-  const caption = useRef('caption')
-  const userProfileId = useRef('userProfileId')
-  const dateCreated = useRef('dateCreated')
+  const publicationDate  = useRef('PublicationDate')
   const history = useHistory()
 
   const constructNewPost = () => {
     const newPostObject = {
       title: title.current.value,
-      imageUrl: imageUrl.current.value,
-      caption: caption.current.value,
-      userProfileId: parseInt(userProfileId.current.value),
-      dateCreated: new Date()
+      content: content.current.value,
+      category: category.current.value,
+      imageUrl: parseInt(imageUrl.current.value),
+      publicationDate: new Date()
     }
     console.log(newPostObject)
     return addPost(newPostObject).then(props.toggler)
