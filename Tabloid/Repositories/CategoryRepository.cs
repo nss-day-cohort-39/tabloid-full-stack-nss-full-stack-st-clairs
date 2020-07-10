@@ -33,9 +33,9 @@ namespace Tabloid.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(Category post)
+        public void Update(Category category)
         {
-            _context.Entry(post).State = EntityState.Modified;
+            _context.Entry(category).State = EntityState.Modified;
             _context.SaveChanges();
         }
 
