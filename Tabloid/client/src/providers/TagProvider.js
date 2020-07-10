@@ -34,7 +34,18 @@ export const TagProvider = (props) => {
                     return resp.json();
                 }
                 throw new Error("Unauthorized");
-            }));
+            })).then(getAllTags)
+
+    const deleteTag = (id) =>
+        getToken().then((token) =>
+            fetch(`api/tag/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(id)
+            })).then(getAllTags)
 
     const getTag = (id) => {
         getToken().then((token) =>
@@ -46,10 +57,8 @@ export const TagProvider = (props) => {
             }))
             .then((res) => res.json())
     }
-
-
     return (
-        <TagContext.Provider value={{ tags, getAllTags, addTag, getTag }}>
+        <TagContext.Provider value={{ tags, getAllTags, addTag, getTag, deleteTag }}>
             {props.children}
         </TagContext.Provider>
     );

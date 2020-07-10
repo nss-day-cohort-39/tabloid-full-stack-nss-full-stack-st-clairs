@@ -31,6 +31,7 @@ export default function Header() {
             }
           </Nav>
 
+
           <Nav className="mr-auto" navbar>
             {isLoggedIn &&
               <NavItem>
