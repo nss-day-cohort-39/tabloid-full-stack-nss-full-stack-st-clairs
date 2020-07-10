@@ -1,13 +1,14 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import { PostContext } from '../providers/PostProvider'
 import { useHistory } from 'react-router-dom'
+import { CategoryContext } from "../providers/CategoryProvider";
 
 export default props => {
   const { addPost, posts } = useContext(PostContext)
+  const { categories, getAllCategories } = useContext(CategoryContext);
   const title = useRef('title')
   const content = useRef('content')
   const category = useRef('category')
-  const categoryId = useRef('categoryId')
   const imageLocation = useRef('imageLocation')
   const publishDateTime = useRef('publishDateTime')
   const history = useHistory()
@@ -17,14 +18,17 @@ export default props => {
       title: title.current.value,
       content: content.current.value,
       dateCreated: new Date(),
-      category: category.current.value,
-      categoryId: categoryId.current.value,
+      categoryId: parseInt(category.current.value),
       imageLocation: imageLocation.current.value,
       publishDateTime: publishDateTime.current.value,
     }
     console.log(newPostObject)
     return addPost(newPostObject).then(props)
   }
+
+  useEffect(() => {
+    getAllCategories();
+}, []);
 
   return (
     <form className='postForm'>
@@ -61,21 +65,21 @@ export default props => {
 
       <fieldset>
       <div className='form-group'>
-      <label htmlFor='postCategoryId'>Post categoryId: </label>
+      <label htmlFor='postCategory'>Category: </label>
             <select
               defaultValue=''
-              name='categoryId'
-              ref={categoryId}
-              id='categoryId'
+              name='category'
+              ref={category}
+              id='category'
               className='form-control'
-              placeholder='categoryId'
+              placeholder='category'
               required
               autoFocus
             >
               <option value='0'>Select a category</option>
-              {posts.map(i => (
-                <option key={categoryId.id} value={categoryId.id}>
-                  {categoryId.category}
+              {categories.map(c => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
                 </option>
               ))}
             </select>

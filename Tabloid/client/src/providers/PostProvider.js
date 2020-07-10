@@ -29,9 +29,7 @@ export const PostProvider = (props) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(post)
-            }).then(resp => resp.json())
-                .then(setPosts))
-            .then(getAllPosts)
+            }).then(resp => resp.json()).then(getAllPosts)).then(setPosts);
     };
 
     const deletePost = (id) =>
@@ -43,7 +41,7 @@ export const PostProvider = (props) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(id)
-            })).then(getAllPosts)
+            })).then(getAllPosts).then(setPosts);
 
     const getPost = (id) => {
         return getToken().then((token) =>
@@ -52,9 +50,8 @@ export const PostProvider = (props) => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).then(resp => resp.json())
-                .then(setPosts));
-    };
+            }).then(resp => resp.json()).then(setPosts));
+         };
 
     const getPostsByUser = (id) => {
         getToken().then((token) =>

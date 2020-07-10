@@ -13,7 +13,7 @@ export const Post = ({ post }) => {
     return (
         <Card className="postCard">
            <p className="text-left px-2">Posted by: {post.userProfile.displayName}</p>
-            <CardImg top src={post.imageUrl} alt={post.title} />
+            <CardImg top src={post.imageLocation} alt={post.title} />
             <CardBody>
             <Link to={`/posts/${post.id}`}>
                     <strong>{post.title}</strong>
@@ -21,7 +21,6 @@ export const Post = ({ post }) => {
                 <p>{post.category}</p>
 
                 <div className="PostCardBody">
-                    <h4>{post.title}</h4>
                     <div>
                         <button type="submit"
                             onClick={
