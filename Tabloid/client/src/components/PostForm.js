@@ -6,6 +6,7 @@ export default props => {
   const { addPost, posts } = useContext(PostContext)
   const title = useRef('title')
   const content = useRef('content')
+  const category = useRef('category')
   const categoryId = useRef('categoryId')
   const imageLocation = useRef('imageLocation')
   const publishDateTime = useRef('publishDateTime')
@@ -16,6 +17,7 @@ export default props => {
       title: title.current.value,
       content: content.current.value,
       dateCreated: new Date(),
+      category: category.current.value,
       categoryId: categoryId.current.value,
       imageLocation: imageLocation.current.value,
       publishDateTime: publishDateTime.current.value,
@@ -58,18 +60,26 @@ export default props => {
       </fieldset>
 
       <fieldset>
-        <div className='form-group'>
-          <label htmlFor='postCategoryId'>Post categoryId: </label>
-          <input
-            type='text'
-            id='postCategoryId'
-            ref={categoryId}
-            required
-            autoFocus
-            className='form-control'
-            placeholder='Post categoryId'
-          />
-        </div>
+      <div className='form-group'>
+      <label htmlFor='postCategoryId'>Post categoryId: </label>
+            <select
+              defaultValue=''
+              name='categoryId'
+              ref={categoryId}
+              id='categoryId'
+              className='form-control'
+              placeholder='categoryId'
+              required
+              autoFocus
+            >
+              <option value='0'>Select a category</option>
+              {posts.map(i => (
+                <option key={categoryId.id} value={categoryId.id}>
+                  {categoryId.category}
+                </option>
+              ))}
+            </select>
+          </div>
       </fieldset>
 
       <fieldset>
