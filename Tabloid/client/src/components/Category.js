@@ -5,20 +5,47 @@ import { CategoryContext } from "../providers/CategoryProvider";
 const Category = ({ category }) => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
-    const { deleteCategory } = useContext(CategoryContext)
+    const { deleteCategory, editCategory } = useContext(CategoryContext)
     // debugger
     return (
         <Card>
             <CardBody>
                 <p>{category.name}</p>
                 <div>
-                    <button type="submit"
+                    {/* <button type="submit"
                         onClick={
                             evt => {
                                 evt.preventDefault()
                             }}
                         className="btn btn-primary">
-                        Edit</button>
+                        Edit</button> */}
+                    <Button color="warning" onClick={toggle}>Edit</Button>
+                    <Modal isOpen={modal} toggle={toggle}>
+                        <ModalHeader toggle={toggle}>
+                            Edit the {category.name} Category</ModalHeader>
+
+                        <ModalBody>
+                            <button type="submit"
+                                onClick={
+                                    evt => {
+                                        evt.preventDefault()
+                                        editCategory(category.id).then(toggle)
+                                    }}
+                                className="btn btn-success">
+                                Submit</button>
+
+                            <button type="submit"
+                                onClick={
+                                    evt => {
+                                        evt.preventDefault()
+                                        toggle()
+                                    }}
+                                className="btn btn-info">
+                                Cancel</button>
+
+                        </ModalBody>
+                    </Modal>
+
                     <Button color="danger" onClick={toggle}>Delete</Button>
 
                     <Modal isOpen={modal} toggle={toggle}>

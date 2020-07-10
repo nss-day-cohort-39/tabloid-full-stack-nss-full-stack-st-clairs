@@ -48,6 +48,15 @@ export const CategoryProvider = (props) => {
                 body: JSON.stringify(id)
             })).then(getAllCategories)
 
+    // const editCategory = (id) =>
+    //     getToken().then((token) =>
+    //         fetch(`api/category/${id}`, {
+    //             method: "EDIT",
+    //             headers: {
+    //                 Authorization
+    //             }
+    //         }))
+
     const getCategory = (id) => {
         getToken().then((token) =>
             fetch(`/api/category/${id}`, {
