@@ -30,7 +30,8 @@ export const PostProvider = (props) => {
                 },
                 body: JSON.stringify(post)
             }).then(resp => resp.json())
-                .then(setPosts));
+                .then(setPosts))
+            .then(getAllPosts)
     };
 
     const getPost = (id) => {
