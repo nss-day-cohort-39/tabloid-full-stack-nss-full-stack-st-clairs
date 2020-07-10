@@ -35,7 +35,7 @@ export const CategoryProvider = (props) => {
                     return resp.json();
                 }
                 throw new Error("Unauthorized");
-            }));
+            })).then(getAllCategories);
 
     const getCategory = (id) => {
         getToken().then((token) =>
