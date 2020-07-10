@@ -62,42 +62,20 @@ export const Tag = ({ tag }) => {
     </ModalBody>
 </Modal>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <Button color="danger" onClick={toggle}>Delete</Button>
-                        <Modal isOpen={modal} toggle={toggle}>
-                            <ModalHeader toggle={toggle}>
-                               Are you sure you want to delete {tag.name}?</ModalHeader>
-
-                        <ModalBody className="TagModalBody">
-                                <button type="submit"
-                                    onClick={
-                                        evt => {
-                                            evt.preventDefault()
-                                            toggle()}}
-                                    className="btn btn-primary">
-                                    Cancel</button>
-                                <button type="submit"
+        <Button color="danger" onClick={toggle}>Delete</Button>
+        
+<Modal isOpen={modal} toggle={toggle}>
+    <ModalHeader toggle={toggle}>
+    Are you sure you want to delete {tag.name}?</ModalHeader>
+`       <ModalBody className="TagModalBody">
+            <button type="submit"
+                onClick={
+                    evt => {
+                        evt.preventDefault()
+                            toggle()}}
+                            className="btn btn-primary">
+                            Cancel</button>
+                            <button type="submit"
                                     onClick={
                                         evt => {
                                             evt.preventDefault()
