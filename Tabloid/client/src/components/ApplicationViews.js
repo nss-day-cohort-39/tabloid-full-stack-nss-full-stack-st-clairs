@@ -8,6 +8,7 @@ import { PostList } from "./PostList";
 import PostForm from './PostForm'
 import { TagList } from "../components/Tag/TagList";
 import CategoryList from "./CategoryList";
+import { UserPostList } from "./UserPostList";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -25,6 +26,10 @@ export default function ApplicationViews() {
 
         <Route path='/posts/add'>
           <PostForm />
+        </Route>
+
+        <Route path="/userposts" exact>
+          {isLoggedIn ? <UserPostList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">
