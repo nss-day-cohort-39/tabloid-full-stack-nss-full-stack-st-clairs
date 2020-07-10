@@ -10,7 +10,7 @@ export const UserPostList = () => {
     useEffect(() => {
         getAllPostsByUser(userProfile.id)
     }, []);
-    debugger
+
     return (
         <div className="container">
             <div className="row justify-content-center">
