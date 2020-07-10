@@ -58,6 +58,7 @@ export default function CategoryList() {
                     className="btn btn-primary">
                     Add</button>
             </div>
+            <br />
             <div>
                 {displayInput()}
             </div>
