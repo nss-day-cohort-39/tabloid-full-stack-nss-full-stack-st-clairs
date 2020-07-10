@@ -3,11 +3,11 @@ import Category from "./Category";
 import { CategoryContext } from "../providers/CategoryProvider";
 
 export default function CategoryList() {
-    const { categories, getAllCategories } = useContext(CategoryContext);
+    const { categories, getAllCategories, addCategory } = useContext(CategoryContext);
 
     useEffect(() => {
         getAllCategories();
-    });
+    }, []);
 
     return (
         <section>
