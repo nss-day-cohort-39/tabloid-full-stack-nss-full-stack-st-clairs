@@ -6,21 +6,22 @@ export default props => {
   const { addPost, posts } = useContext(PostContext)
   const title = useRef('title')
   const content = useRef('content')
-  const category = useRef('category')
-  const imageUrl = useRef('imageUrl')
-  const publicationDate  = useRef('PublicationDate')
+  const categoryId = useRef('categoryId')
+  const imageLocation = useRef('imageLocation')
+  const publishDateTime = useRef('publishDateTime')
   const history = useHistory()
-
+// debugger
   const constructNewPost = () => {
     const newPostObject = {
       title: title.current.value,
       content: content.current.value,
-      category: category.current.value,
-      imageUrl: parseInt(imageUrl.current.value),
-      publicationDate: new Date()
+      dateCreated: new Date(),
+      categoryId: categoryId.current.value,
+      imageLocation: imageLocation.current.value,
+      publishDateTime: publishDateTime.current.value,
     }
     console.log(newPostObject)
-    return addPost(newPostObject).then(props.toggler)
+    return addPost(newPostObject).then(props)
   }
 
   return (
@@ -58,45 +59,45 @@ export default props => {
 
       <fieldset>
         <div className='form-group'>
-          <label htmlFor='postCategory'>Post category: </label>
+          <label htmlFor='postCategoryId'>Post categoryId: </label>
           <input
             type='text'
-            id='postCategory'
-            ref={category}
+            id='postCategoryId'
+            ref={categoryId}
             required
             autoFocus
             className='form-control'
-            placeholder='Post category'
+            placeholder='Post categoryId'
           />
         </div>
       </fieldset>
 
       <fieldset>
         <div className='form-group'>
-          <label htmlFor='postImageUrl'>Post imageUrl: </label>
+          <label htmlFor='postImageLocation'>Post imageLocation: </label>
           <input
             type='text'
-            id='postImageUrl'
-            ref={imageUrl}
+            id='postImageLocation'
+            ref={imageLocation}
             required
             autoFocus
             className='form-control'
-            placeholder='Post imageUrl'
+            placeholder='Post imageLocation'
           />
         </div>
       </fieldset>
      
       <fieldset>
         <div className='form-group'>
-          <label htmlFor='postPublicationDate'>Post publicationDate: </label>
+          <label htmlFor='postPublishDateTime'>Post publishDateTime: </label>
           <input
-            type='text'
-            id='postPublicationDate'
-            ref={publicationDate}
+            type='date'
+            id='postPublishDateTime'
+            ref={publishDateTime}
             required
             autoFocus
             className='form-control'
-            placeholder='Post publicationDate'
+            placeholder='Post publishDateTime'
           />
         </div>
       </fieldset>
@@ -105,7 +106,7 @@ export default props => {
         type='submit'
         onClick={evt => {
           evt.preventDefault() // Prevent browser from submitting the form
-          constructNewPost().then(p => history.push('/'))
+          constructNewPost().then(p => ('/'))
         }}
         className='btn btn-primary'
       >
