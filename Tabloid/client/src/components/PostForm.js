@@ -6,7 +6,7 @@ import { CategoryContext } from "../providers/CategoryProvider";
 export default props => {
   const { addPost, posts } = useContext(PostContext)
   const { categories, getAllCategories } = useContext(CategoryContext);
-  const id = useRef('id')
+
   const title = useRef('title')
   const content = useRef('content')
   const category = useRef('category')
@@ -17,7 +17,6 @@ export default props => {
 // debugger
   const constructNewPost = () => {
     const newPostObject = {
-      id: id.current.value,
       title: title.current.value,
       content: content.current.value,
       createDateTime: new Date(),
@@ -124,7 +123,8 @@ export default props => {
         type='submit'
         onClick={evt => {
           evt.preventDefault() // Prevent browser from submitting the form
-          constructNewPost().then(p => ('/'))
+          constructNewPost().then(p => history.push('/userposts'))
+
         }}
         className='btn btn-primary'
       >

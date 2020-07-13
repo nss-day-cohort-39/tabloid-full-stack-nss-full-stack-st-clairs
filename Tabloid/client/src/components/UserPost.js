@@ -47,7 +47,7 @@ export const UserPost = ({ post }) => {
                                     onClick={
                                         evt => {
                                             evt.preventDefault()
-                                            deletePost(post.id).then(toggle)
+                                            deletePost(post).then(toggle)
                                         }}
                                     className="btn btn-danger">
                                     Delete

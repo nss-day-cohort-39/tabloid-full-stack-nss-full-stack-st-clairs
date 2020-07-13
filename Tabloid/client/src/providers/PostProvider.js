@@ -32,16 +32,16 @@ export const PostProvider = (props) => {
             }).then(resp => resp.json()).then(getAllPosts)).then(setPosts);
     };
 
-    const deletePost = (id) =>
-        getToken().then((token) =>
-            fetch(apiUrl, {
-                method: "DELETE",
+    const deletePost = (id) => {
+        return getToken().then((token) =>
+            fetch(apiUrl + `/${id}`, {
+                method: "DELETE", 
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(id)
-            })).then(getAllPosts).then(setPosts);
+            })).then(getAllPosts);
+        }
 
     const getPost = (id) => {
         return getToken().then((token) =>
@@ -63,6 +63,7 @@ export const PostProvider = (props) => {
             }).then(resp => resp.json())
                 .then(setPosts));
     };
+
     return (
         <PostContext.Provider value={{
             posts, getAllPosts, addPost, deletePost, getPost, getPostsByUser

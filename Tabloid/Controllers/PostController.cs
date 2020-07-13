@@ -13,9 +13,12 @@ namespace Tabloid.Controllers
     public class PostController : ControllerBase
     {
         private readonly PostRepository _postRepository;
+        private readonly UserProfileRepository _userProfileRepository;
+
         public PostController(ApplicationDbContext context)
         {
             _postRepository = new PostRepository(context);
+            _userProfileRepository = new UserProfileRepository(context);
         }
 
         [HttpGet]
@@ -61,9 +64,10 @@ namespace Tabloid.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Post post)
         {
-            _postRepository.Delete(id);
+            if(post.UserProfileId == )
+            _postRepository.Delete(post.Id);
             return NoContent();
         }
     }
