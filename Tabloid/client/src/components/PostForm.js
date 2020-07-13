@@ -14,8 +14,8 @@ export default props => {
   const imageLocation = useRef('imageLocation')
   const publishDateTime = useRef('publishDateTime')
   const history = useHistory()
-// debugger
   const constructNewPost = () => {
+    
     const newPostObject = {
       title: title.current.value,
       content: content.current.value,
