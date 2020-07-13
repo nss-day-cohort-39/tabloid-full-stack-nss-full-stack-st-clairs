@@ -1,26 +1,25 @@
 import React, { useContext, useEffect } from "react";
-import { PostContext } from "../providers/PostProvider";
-import { Post } from "./Post";
+import { UserPost } from "./UserPost";
+import { UserPostContext } from "../providers/UserPostProvider";
 
 export const UserPostList = () => {
 
     const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
-    const { posts, getPostsByUser } = useContext(PostContext);
+    const { userPosts, getAllPostsByUser } = useContext(UserPostContext);
 
     useEffect(() => {
-        getPostsByUser(userProfile.id)
+        getAllPostsByUser(userProfile.id)
     }, []);
-
+    // debugger
     return (
         <div className="container">
             <div className="row justify-content-center">
                 <div className="cards-column">
-                    {posts.map((post) => (
-                        <Post key={post.id} post={post} />
+                    {userPosts.map((post) => (
+                        <UserPost key={post.id} post={post} />
                     ))}
                 </div>
             </div>
         </div>
     );
 };
-
