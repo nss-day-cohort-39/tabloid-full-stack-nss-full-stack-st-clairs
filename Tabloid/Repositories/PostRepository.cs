@@ -16,7 +16,6 @@ namespace Tabloid.Repositories
             _context = context;
         }
 
-
         public List<Post> GetAll()
         {
             return _context.Post

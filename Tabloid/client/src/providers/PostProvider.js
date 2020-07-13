@@ -21,7 +21,7 @@ export const PostProvider = (props) => {
     };
 
     const addPost = (post) => {
-        getToken().then((token) =>
+        return getToken().then((token) =>
             fetch(apiUrl, {
                 method: "POST",
                 headers: {
@@ -29,10 +29,19 @@ export const PostProvider = (props) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(post)
-            }).then(resp => resp.json())
-                .then(setPosts))
-            .then(getAllPosts)
+            }).then(resp => resp.json()).then(getAllPosts)).then(setPosts);
     };
+
+    const deletePost = (id) => {
+        return getToken().then((token) =>
+            fetch(apiUrl + `/${id}`, {
+                method: "DELETE", 
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+            })).then(getAllPosts);
+        }
 
     const getPost = (id) => {
         return getToken().then((token) =>
@@ -41,9 +50,8 @@ export const PostProvider = (props) => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).then(resp => resp.json())
-                .then(setPosts));
-    };
+            }).then(resp => resp.json()).then(setPosts));
+         };
 
     const getPostsByUser = (id) => {
         getToken().then((token) =>
@@ -55,9 +63,10 @@ export const PostProvider = (props) => {
             }).then(resp => resp.json())
                 .then(setPosts));
     };
+
     return (
         <PostContext.Provider value={{
-            posts, getAllPosts, addPost, getPost, getPostsByUser
+            posts, getAllPosts, addPost, deletePost, getPost, getPostsByUser
         }}>
             {props.children}
         </PostContext.Provider>
