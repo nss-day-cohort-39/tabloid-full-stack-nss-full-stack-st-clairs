@@ -64,10 +64,9 @@ namespace Tabloid.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Post post)
+        public IActionResult Delete(int Id)
         {
-            if(post.UserProfileId == )
-            _postRepository.Delete(post.Id);
+            _postRepository.Delete(Id);
             return NoContent();
         }
     }

@@ -37,7 +37,7 @@ export const UserPostProvider = (props) => {
 
     const deletePost = (post) => {
         return getToken().then((token) =>
-            fetch(apiUrl + `/${post}`, {
+            fetch(apiUrl + `/${post.id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
