@@ -31,7 +31,6 @@ export const UserPostProvider = (props) => {
                 },
                 body: JSON.stringify(post)
             }).then(resp => resp.json())
-                .then(setPosts)
                 .then(getAllPostsByUser))
     };
 

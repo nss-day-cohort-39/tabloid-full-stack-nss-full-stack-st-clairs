@@ -13,12 +13,10 @@ namespace Tabloid.Controllers
     public class PostController : ControllerBase
     {
         private readonly PostRepository _postRepository;
-        private readonly UserProfileRepository _userProfileRepository;
 
         public PostController(ApplicationDbContext context)
         {
             _postRepository = new PostRepository(context);
-            _userProfileRepository = new UserProfileRepository(context);
         }
 
         [HttpGet]
