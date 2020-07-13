@@ -6,6 +6,7 @@ import Register from "./Register";
 import Hello from "./Hello";
 import { PostList } from "./PostList";
 import PostForm from './PostForm'
+import PostDetails from './PostDetails'
 import { TagList } from "../components/Tag/TagList";
 import CategoryList from "./CategoryList";
 import { UserPostList } from "./UserPostList";
@@ -26,6 +27,10 @@ export default function ApplicationViews() {
 
         <Route path='/posts/add'>
           <PostForm />
+        </Route>
+
+        <Route path='/posts/details'>
+          <PostDetails />
         </Route>
 
         <Route path="/userposts" exact>
