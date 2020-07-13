@@ -24,6 +24,7 @@ namespace Tabloid.Repositories
                 .OrderByDescending(p => p.CreateDateTime)
                 .Where(p => p.IsApproved == true && p.PublishDateTime < DateTime.Now)
                 .ToList();
+
         }
 
         public Post GetById(int id)
