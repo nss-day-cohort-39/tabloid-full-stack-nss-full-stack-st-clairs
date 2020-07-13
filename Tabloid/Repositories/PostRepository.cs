@@ -21,15 +21,18 @@ namespace Tabloid.Repositories
             return _context.Post
                 .Include(p => p.UserProfile)
                 .Include(p => p.Comments)
-                .Include(p => p.Category)
                 .OrderByDescending(p => p.CreateDateTime)
                 .Where(p => p.IsApproved == true && p.PublishDateTime < DateTime.Now)
                 .ToList();
+
         }
 
         public Post GetById(int id)
         {
-            return _context.Post.Include(p => p.UserProfile).Include(p => p.Comments).Include(p => p.Category).FirstOrDefault(p => p.Id == id);
+            return _context.Post.Include(p => p.UserProfile)
+                                .Include(p => p.Comments)
+                                .Include(p => p.Category)
+                                .FirstOrDefault(p => p.Id == id);
         }
 
         public List<Post> GetByUserProfileId(int id)
