@@ -4,6 +4,7 @@ using Tabloid.Repositories;
 using Tabloid.Models;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Tabloid.Controllers
 {
@@ -13,10 +14,12 @@ namespace Tabloid.Controllers
     public class PostController : ControllerBase
     {
         private readonly PostRepository _postRepository;
+        private readonly UserProfileRepository _userProfileRepository;
 
         public PostController(ApplicationDbContext context)
         {
             _postRepository = new PostRepository(context);
+            _userProfileRepository = new UserProfileRepository(context);
         }
 
         [HttpGet]
@@ -62,10 +65,23 @@ namespace Tabloid.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int id)
         {
-            _postRepository.Delete(Id);
+            var user = GetCurrentUserProfile();
+            var post = _postRepository.GetById(id);
+            if (user.Id != post.UserProfileId)
+            {
+                return Forbid();
+            }
+           
+            _postRepository.Delete(id);
             return NoContent();
+        }
+
+        private UserProfile GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }
