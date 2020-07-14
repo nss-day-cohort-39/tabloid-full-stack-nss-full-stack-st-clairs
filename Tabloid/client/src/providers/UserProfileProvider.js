@@ -61,7 +61,6 @@ export function UserProfileProvider(props) {
   const [userProfiles, setUserProfiles] = useState([])
 
   const getUserProfiles = () => {
-    debugger
     return getToken().then((token) =>
       fetch(apiUrl, {
         method: "GET",
