@@ -33,17 +33,17 @@ export const PostProvider = (props) => {
             }).then(resp => resp.json()).then(getAllPosts))
     };
 
-const updatePost = (post) =>
-    getToken().then((token) =>
-        fetch(apiUrl, + `/${post.id}`, {
+    const updatePost = (post) => {
+        return fetch(`/api/post/${post.id}`, {
             method: "PUT",
             headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(post)
-        })).then(getAllPosts)
-        
+            body: JSON.stringify(post),
+        }).then(getAllPosts);;
+
+    }
+
     const deletePost = (id) => {
         return getToken().then((token) =>
             fetch(apiUrl + `/${id}`, {
