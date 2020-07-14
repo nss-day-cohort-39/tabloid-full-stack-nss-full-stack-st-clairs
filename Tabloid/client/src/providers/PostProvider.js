@@ -43,6 +43,7 @@ const updatePost = (post) =>
             },
             body: JSON.stringify(post)
         })).then(getAllPosts)
+        
     const deletePost = (id) => {
         return getToken().then((token) =>
             fetch(apiUrl + `/${id}`, {
@@ -67,7 +68,7 @@ const updatePost = (post) =>
     return (
         <PostContext.Provider value={{
 
-            posts, getAllPosts, addPost, deletePost, getPost, getPostsByUser, updatePost
+            posts, getAllPosts, addPost, deletePost, getPost, getAllPosts, updatePost
         }}>
             {props.children}
         </PostContext.Provider>
