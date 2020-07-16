@@ -1,13 +1,28 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Tabloid.Models
 {
     public class Comment
     {
         public int Id { get; set; }
-       
-        //this causes a cycle to break the system: to be fixed
-        //public int PostId { get; set; }
-        //public Post Post { get; set; }
+
+        public int PostId { get; set; }
+
+        public Post Post { get; set; }
+
+        public int UserProfileId { get; set; }
+
+        public UserProfile UserProfile { get; set; }
+
+        [Required]
+        public string Subject { get; set; }
+        
+        [Required]
+        public string Content { get; set; }
+
+        [Required]
+        public DateTime CreateDateTime { get; set; }
     }
 }
