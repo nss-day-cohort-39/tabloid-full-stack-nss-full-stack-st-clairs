@@ -2,17 +2,11 @@
 using Tabloid.Data;
 using Tabloid.Repositories;
 using Tabloid.Models;
-<<<<<<< HEAD
-
-namespace Tabloid.Controllers
-{
-=======
 using Microsoft.AspNetCore.Authorization;
 
 namespace Tabloid.Controllers
 {
     [Authorize]
->>>>>>> master
     [Route("api/[controller]")]
     [ApiController]
     public class CommentController : ControllerBase
@@ -40,32 +34,6 @@ namespace Tabloid.Controllers
             return Ok(comment);
         }
 
-<<<<<<< HEAD
-        //[HttpGet("getbyPost/{id}")]
-        //public IActionResult GetByPost(int id)
-        //{
-        //    return Ok(_commentRepository.GetByPostId(id));
-        //}
-
-        //        [HttpPost]
-        //        public IActionResult Post(Comment comment)
-        //        {
-        //            _commentRepository.Add(comment);
-        //            return CreatedAtAction("Get", new { id = comment.Id }, comment);
-        //        }
-
-        //        [HttpPut("{id}")]
-        //        public IActionResult Put(int id, Comment comment)
-        //        {
-        //            if (id != comment.Id)
-        //            {
-        //                return BadRequest();
-        //            }
-
-        //            _commentRepository.Update(comment);
-        //            return NoContent();
-        //        }
-=======
         [HttpGet("getbypost/{id}")]
         public IActionResult GetByPost(int id)
         {
