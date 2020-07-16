@@ -7,6 +7,7 @@ import { CategoryProvider } from './providers/CategoryProvider';
 import { TagProvider } from "./providers/TagProvider";
 import { PostProvider } from './providers/PostProvider';
 import { UserPostProvider } from './providers/UserPostProvider';
+import { CommentProvider } from './providers/CommentProvider';
 
 function App() {
   return (
@@ -15,10 +16,12 @@ function App() {
         <PostProvider>
           <UserPostProvider>
             <CategoryProvider>
-              <TagProvider>
-                <Header />
-                <ApplicationViews />
-              </TagProvider>
+              <CommentProvider>
+                <TagProvider>
+                  <Header />
+                  <ApplicationViews />
+                </TagProvider>
+              </CommentProvider>
             </CategoryProvider>
           </UserPostProvider>
         </PostProvider>

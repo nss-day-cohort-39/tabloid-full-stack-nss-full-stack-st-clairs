@@ -10,6 +10,7 @@ import { TagList } from "../components/Tag/TagList";
 import CategoryList from "./CategoryList";
 import { UserPostList } from "./UserPostList";
 import PostDetails from "./PostDetails";
+import { CommentList } from "./CommentList";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -35,6 +36,10 @@ export default function ApplicationViews() {
 
         <Route path="/userposts" exact>
           {isLoggedIn ? <UserPostList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/comments/:id" exact>
+          {isLoggedIn ? <CommentList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">
