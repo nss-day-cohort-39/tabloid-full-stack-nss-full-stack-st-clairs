@@ -3,6 +3,7 @@ import { Card, CardImg, CardBody } from "reactstrap";
 import { ListGroup, ListGroupItem } from 'reactstrap'
 import { PostContext } from '../providers/PostProvider'
 import { useParams, useHistory, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { Post } from './Post'
 import { TagsOnPost } from "./Tag/TagsOnPost";
 
@@ -16,11 +17,11 @@ const PostDetails = () => {
   const toggleModal = () => setShowModal(!showModal);
 
 
-  console.log(id);
-
   useEffect(() => {
     getPost(id).then(setPost)
   }, [])
+
+
 
   if (!post) {
     return null
@@ -30,9 +31,9 @@ const PostDetails = () => {
     <div className='container'>
       <div className='row justify-content-center'>
         <div className='col-sm-12 col-lg-6'>
-        <Card className="m-4">
+          <Card className="m-4">
             <p className="text-left px-2">Posted by: {post.userProfile.displayName}</p>
-            <CardImg top src={post.imageLocation} alt={post.title} />
+            <CardImg top src={post.imageLocation} />
             <CardBody>
                 <h4>{post.title}</h4>
                 <p>{post.content}</p>

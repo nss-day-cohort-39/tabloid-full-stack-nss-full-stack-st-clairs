@@ -11,7 +11,7 @@ namespace Tabloid.Models
         [Required]
         public string Title { get; set; }
 
-        [Required]
+
         public string ImageLocation { get; set; }
 
         public string Content { get; set; }
@@ -19,8 +19,7 @@ namespace Tabloid.Models
         [Required]
         public DateTime CreateDateTime { get; set; }
         
-        [Required]
-        public DateTime PublishDateTime { get; set; }
+        public DateTime? PublishDateTime { get; set; }
 
         public bool IsApproved { get; set; }
 

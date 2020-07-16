@@ -39,6 +39,7 @@ const Category = ({ category }) => {
                                     className="form-control"
                                     defaultValue={category.name}
                                 />
+                                <br />
                                 <div className="">
                                     <button type="submit"
                                         onClick={
