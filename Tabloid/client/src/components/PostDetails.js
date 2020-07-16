@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import { Card, CardImg, CardBody } from "reactstrap";
 import { ListGroup, ListGroupItem } from 'reactstrap'
 import { PostContext } from '../providers/PostProvider'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { Post } from './Post'
 
 const PostDetails = () => {
@@ -10,11 +10,11 @@ const PostDetails = () => {
   const { getPost } = useContext(PostContext)
   const { id } = useParams()
 
-  console.log(id);
-
   useEffect(() => {
     getPost(id).then(setPost)
   }, [])
+
+
 
   if (!post) {
     return null
@@ -32,6 +32,9 @@ const PostDetails = () => {
               <p>{post.content}</p>
               <p>Published: {post.publishDateTime}</p>
               <p>Category: {post.category.name}</p>
+              <Link to={`/comments/${post.id}`}>
+                <h5>View Comments</h5>
+              </Link>
             </CardBody>
           </Card>
         </div>

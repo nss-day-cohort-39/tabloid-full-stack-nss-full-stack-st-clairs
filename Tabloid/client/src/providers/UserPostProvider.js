@@ -6,7 +6,6 @@ export const UserPostContext = React.createContext();
 export const UserPostProvider = (props) => {
     const { getToken } = useContext(UserProfileContext)
     const [userPosts, setPosts] = useState([]);
-    const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
 
     const apiUrl = '/api/post'
 
@@ -43,7 +42,7 @@ export const UserPostProvider = (props) => {
                     "Content-Type": "application/json"
                 },
             })).then(() => getAllPostsByUser(post.userProfile.id))
-        }
+    }
 
     return (
         <UserPostContext.Provider value={{
