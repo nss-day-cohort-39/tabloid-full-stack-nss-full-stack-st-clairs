@@ -47,7 +47,7 @@ export default function CategoryList() {
     return (
         <section>
             <div>
-                <h2>Category</h2>
+                <h2>Category Management</h2>
                 <button type="submit"
                     onClick={
                         evt => {

@@ -11,6 +11,7 @@ import CategoryList from "./CategoryList";
 import { UserPostList } from "./UserPostList";
 import PostDetails from "./PostDetails";
 import { CommentList } from "./CommentList";
+import { UserProfileList } from "./UserProfileList";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -56,6 +57,10 @@ export default function ApplicationViews() {
 
         <Route path="/tags">
           <TagList />
+        </Route>
+
+        <Route path="/profiles">
+          <UserProfileList />
         </Route>
 
       </Switch>
