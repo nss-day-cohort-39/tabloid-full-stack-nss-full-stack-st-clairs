@@ -6,9 +6,9 @@ export const Comment = ({ comment }) => {
         <Card className="">
             <p className="text-left px-2">Commented by: {comment.userProfile.displayName}</p>
             <CardBody>
-                <p>{comment.subject}</p>
-                <p>{comment.content}</p>
-                <p>{comment.createDateTime}</p>
+                <p>Subject: {comment.subject}</p>
+                <p>Content: {comment.content}</p>
+                <p>Comment Date: {comment.createDateTime}</p>
             </CardBody>
         </Card>
     );
