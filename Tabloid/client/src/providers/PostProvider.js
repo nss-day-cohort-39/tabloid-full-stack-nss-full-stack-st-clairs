@@ -36,13 +36,13 @@ export const PostProvider = (props) => {
     const deletePost = (id) => {
         return getToken().then((token) =>
             fetch(apiUrl + `/${id}`, {
-                method: "DELETE", 
+                method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
             })).then(getAllPosts);
-        }
+    }
 
     const getPost = (id) => {
         return getToken().then((token) =>
@@ -52,7 +52,7 @@ export const PostProvider = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             }).then(resp => resp.json()));
-         };
+    };
 
     return (
         <PostContext.Provider value={{
