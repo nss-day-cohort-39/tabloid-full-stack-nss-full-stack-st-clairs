@@ -24,21 +24,16 @@ const PostDetails = () => {
     <div className='container'>
       <div className='row justify-content-center'>
         <div className='col-sm-12 col-lg-6'>
-        <Card className="m-4">
+          <Card className="m-4">
             <p className="text-left px-2">Posted by: {post.userProfile.displayName}</p>
-            <CardImg top src={post.imageLocation} alt={post.title} />
+            <CardImg top src={post.imageLocation} />
             <CardBody>
-                <h4>{post.title}</h4>
-                <p>{post.content}</p>
-                <p>{post.publishDateTime}</p>
-                <p>{post.category.name}</p>
+              <h4>{post.title}</h4>
+              <p>{post.content}</p>
+              <p>Published: {post.publishDateTime}</p>
+              <p>Category: {post.category.name}</p>
             </CardBody>
-        </Card>
-          {/* <ListGroup>
-            {post.title.map(c => (
-              <ListGroupItem>{c.content}</ListGroupItem>
-            ))}
-          </ListGroup> */}
+          </Card>
         </div>
       </div>
     </div>

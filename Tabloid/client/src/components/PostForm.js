@@ -14,8 +14,9 @@ export default props => {
   const imageLocation = useRef('imageLocation')
   const publishDateTime = useRef('publishDateTime')
   const history = useHistory()
+  // debugger
   const constructNewPost = () => {
-    
+
     const newPostObject = {
       title: title.current.value,
       content: content.current.value,
@@ -25,13 +26,18 @@ export default props => {
       imageLocation: imageLocation.current.value,
       publishDateTime: publishDateTime.current.value,
     }
+    if (publishDateTime.current.value === "") {
+      newPostObject.publishDateTime = null;
+    }
+
     console.log(newPostObject)
     return addPost(newPostObject).then(props)
   }
 
+
   useEffect(() => {
     getAllCategories();
-}, []);
+  }, []);
 
   return (
     <form className='postForm'>
@@ -67,26 +73,26 @@ export default props => {
       </fieldset>
 
       <fieldset>
-      <div className='form-group'>
-      <label htmlFor='postCategory'>Category: </label>
-            <select
-              defaultValue=''
-              name='category'
-              ref={category}
-              id='category'
-              className='form-control'
-              placeholder='category'
-              required
-              autoFocus
-            >
-              <option value='0'>Select a category</option>
-              {categories.map(c => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-          </div>
+        <div className='form-group'>
+          <label htmlFor='postCategory'>Category: </label>
+          <select
+            defaultValue=''
+            name='category'
+            ref={category}
+            id='category'
+            className='form-control'
+            placeholder='category'
+            required
+            autoFocus
+          >
+            <option value='0'>Select a category</option>
+            {categories.map(c => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </fieldset>
 
       <fieldset>
@@ -96,14 +102,13 @@ export default props => {
             type='text'
             id='postImageLocation'
             ref={imageLocation}
-            required
             autoFocus
             className='form-control'
             placeholder='Post imageLocation'
           />
         </div>
       </fieldset>
-     
+
       <fieldset>
         <div className='form-group'>
           <label htmlFor='postPublishDateTime'>Post publishDateTime: </label>
@@ -111,7 +116,6 @@ export default props => {
             type='date'
             id='postPublishDateTime'
             ref={publishDateTime}
-            required
             autoFocus
             className='form-control'
             placeholder='Post publishDateTime'

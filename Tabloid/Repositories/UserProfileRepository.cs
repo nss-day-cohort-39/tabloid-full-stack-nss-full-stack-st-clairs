@@ -25,7 +25,9 @@ namespace Tabloid.Repositories
         public List<UserProfile> GetAll()
         {
             return _context.UserProfile
-                .Include(up => up.UserType).OrderBy(up => up.DisplayName).ToList();
+                .Include(up => up.UserType)
+                .OrderBy(up => up.DisplayName)
+                .ToList();
         }
 
         public void Add(UserProfile userProfile)

@@ -7,6 +7,7 @@ export const UserProfile = ({ userProfile }) => {
             <CardBody>
                 <h5>{userProfile.firstName} {userProfile.lastName}</h5>
                 <p>UserName: {userProfile.displayName}</p>
+                <p>UserType: {userProfile.userType.name}</p>
             </CardBody>
         </Card>
     );
