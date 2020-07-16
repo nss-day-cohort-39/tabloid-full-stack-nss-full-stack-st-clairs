@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 import Login from "./Login";
 import Register from "./Register";
-import Hello from "./Hello";
 import { PostList } from "./PostList";
 import PostForm from './PostForm'
 import { TagList } from "../components/Tag/TagList";
@@ -19,20 +18,17 @@ export default function ApplicationViews() {
   return (
     <main>
       <Switch>
-        <Route path="/" exact>
-          {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
-        </Route>
 
         <Route path="/posts" exact>
           {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path='/posts/add' exact>
-          <PostForm />
+          {isLoggedIn ? <PostForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route path='/posts/:id' exact>
-          <PostDetails />
+          {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/userposts" exact>
@@ -51,16 +47,16 @@ export default function ApplicationViews() {
           <Register />
         </Route>
 
-        <Route path="/category">
-          <CategoryList />
+        <Route path="/categories">
+          {isLoggedIn ? <CategoryList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/tags">
-          <TagList />
+          {isLoggedIn ? <TagList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/profiles">
-          <UserProfileList />
+          {isLoggedIn ? <UserProfileList /> : <Redirect to="/login" />}
         </Route>
 
       </Switch>

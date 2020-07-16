@@ -26,16 +26,16 @@ const PostDetails = () => {
         <div className='col-sm-12 col-lg-6'>
           <Card className="m-4">
             <p className="text-left px-2">Posted by: {post.userProfile.displayName}</p>
-            <CardImg top src={post.imageLocation} alt={post.title} />
+            <CardImg top src={post.imageLocation} />
             <CardBody>
               <h4>{post.title}</h4>
               <p>{post.content}</p>
-              <p>{post.publishDateTime}</p>
-              <p>{post.category.name}</p>
+              <p>Published: {post.publishDateTime}</p>
+              <p>Category: {post.category.name}</p>
+              <Link to={`/comments/${post.id}`}>
+                <h5>View Comments</h5>
+              </Link>
             </CardBody>
-            <Link to={`/comments/${post.id}`}>
-              <h5>View Comments</h5>
-            </Link>
           </Card>
         </div>
       </div>

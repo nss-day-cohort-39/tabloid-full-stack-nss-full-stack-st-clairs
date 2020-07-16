@@ -26,7 +26,7 @@ export const Tag = ({ tag }) => {
                 <div className="TagCardBody">
                     <h4>{tag.name}</h4>
                     <div>
-                        <Button color="primary" onClick={toggleEdit}>Edit</Button>
+                        <Button color="warning" onClick={toggleEdit}>Edit</Button>
 
                         <Modal isOpen={editModal} toggle={toggleEdit}>
                             <ModalHeader toggle={toggleEdit}>
@@ -42,6 +42,7 @@ export const Tag = ({ tag }) => {
                                         className="form-control"
                                         defaultValue={tag.name}
                                     />
+                                    <br />
                                     <div className="">
                                         <button type="submit"
                                             onClick={
@@ -57,7 +58,7 @@ export const Tag = ({ tag }) => {
                                                     evt.preventDefault() // Prevent browser from submitting the form
                                                     tagUpdate()
                                                 }}
-                                            className="btn btn-primary">
+                                            className="btn btn-success">
                                             Save Changes</button>
                                     </div>
                                 </div>
