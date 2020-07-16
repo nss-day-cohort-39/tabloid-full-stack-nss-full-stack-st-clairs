@@ -12,12 +12,13 @@ export const UserPost = ({ post }) => {
     return (
         <Card className="postCard">
             <p className="text-left px-2">Posted by: {post.userProfile.displayName}</p>
-            <CardImg top src={post.imageLocation} alt={post.title} />
+            <CardImg top src={post.imageLocation} />
             <CardBody>
                 <Link to={`/posts/${post.id}`}>
                     <strong>{post.title}</strong>
                 </Link>
-                <p>{post.category}</p>
+                <p>Category: {post.category.name}</p>
+                <p>Created: {post.createDateTime}</p>
                 <div className="PostCardBody">
                     <div>
                         <button type="submit"

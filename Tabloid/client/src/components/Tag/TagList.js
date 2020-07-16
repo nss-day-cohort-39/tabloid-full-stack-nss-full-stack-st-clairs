@@ -35,12 +35,13 @@ export const TagList = () => {
                         onClick={
                             evt => {
                                 evt.preventDefault()
-                                    constructNewTag()
-                                        setTagInput(false)}}
+                                constructNewTag()
+                                setTagInput(false)
+                            }}
                         className="btn btn-primary">
                         Save Tag</button>
-                        </div>
-                )
+                </div>
+            )
         }
     }
 
@@ -52,12 +53,13 @@ export const TagList = () => {
                     onClick={
                         evt => {
                             evt.preventDefault() // Prevent browser from submitting the form
-                                setTagInput(true)
+                            setTagInput(true)
                         }
                     }
                     className="btn btn-primary">
                     Add a Tag</button>
             </div>
+            <br />
             <div>{displayTagInput()}</div>
             <div className="yagContainer">
                 {tags.map(t =>
