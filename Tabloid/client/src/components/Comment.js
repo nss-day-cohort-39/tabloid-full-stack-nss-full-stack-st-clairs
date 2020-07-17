@@ -1,14 +1,16 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext } from "react";
 import { Card, CardBody, Button, ModalBody, Modal, ModalHeader } from "reactstrap";
 import { CommentContext } from "../providers/CommentProvider";
+import { useHistory } from 'react-router-dom'
 
 export const Comment = ({ comment }) => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
-    const name = useRef()
+    const history = useHistory()
 
     const { deleteComment } = useContext(CommentContext)
+
     // const [editModal, setEditModal] = useState(false)
     // const toggleEdit = () => setEditModal(!editModal)
 
@@ -85,7 +87,7 @@ export const Comment = ({ comment }) => {
                                 onClick={
                                     evt => {
                                         evt.preventDefault()
-                                        deleteComment(comment.id).then(toggle)
+                                        deleteComment(comment).then(toggle)
                                     }}
                                 className="btn btn-danger">
                                 Delete</button>
