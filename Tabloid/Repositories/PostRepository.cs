@@ -33,6 +33,8 @@ namespace Tabloid.Repositories
             return _context.Post.Include(p => p.UserProfile)
                                 .Include(p => p.Comments)
                                 .Include(p => p.Category)
+                                .Include(p => p.PostTags)
+                                .ThenInclude(pt => pt.Tag)
                                 .OrderByDescending(p => p.CreateDateTime)
                                 .FirstOrDefault(p => p.Id == id);
         }
@@ -42,6 +44,8 @@ namespace Tabloid.Repositories
             return _context.Post.Include(p => p.UserProfile)
                             .Include(p => p.Comments)
                             .Include(p => p.Category)
+                            .Include(p => p.PostTags)
+                            .ThenInclude(pt => pt.Tag)
                             .Where(p => p.UserProfileId == id)
                             .OrderByDescending(p => p.CreateDateTime)
                             .ToList();
@@ -63,6 +67,23 @@ namespace Tabloid.Repositories
         {
             var post = GetById(id);
             _context.Post.Remove(post);
+            _context.SaveChanges();
+        }
+        public PostTag GetPostTagById(int id)
+        {
+            return _context.PostTag
+                           .FirstOrDefault(pt => pt.Id == id);
+        }
+        public void InsertTag(PostTag postTag)
+        {
+            _context.PostTag.Add(postTag);
+            _context.SaveChanges();
+        }
+
+        public void RemoveTag(int id)
+        {
+            var postTag = GetPostTagById(id);
+            _context.PostTag.Remove(postTag);
             _context.SaveChanges();
         }
     }
