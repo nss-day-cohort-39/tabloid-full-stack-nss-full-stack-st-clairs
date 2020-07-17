@@ -19,7 +19,7 @@
     },
     "Tabloid": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "api/hello",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Local"
