@@ -1,13 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Card, CardBody, Button, ModalBody, Modal, ModalHeader } from "reactstrap";
 import { CommentContext } from "../providers/CommentProvider";
-import { useHistory } from 'react-router-dom'
 
 export const Comment = ({ comment }) => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
-
-    const history = useHistory()
 
     const { deleteComment } = useContext(CommentContext)
 

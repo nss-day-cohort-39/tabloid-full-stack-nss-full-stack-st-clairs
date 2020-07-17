@@ -40,18 +40,17 @@ const PostDetails = () => {
                 <p>{post.category.name}</p>
             <ListGroupItem><div className="postTags"> <strong>Tags: </strong>  {post.postTags.map(pt => <TagsOnPost key={pt.id} postTag={pt} />)}</div></ListGroupItem>
             </CardBody>
-        </Card>
 
+            <Link to={`/comments/${id}`}>
+            <p>View Comments</p>
+          </Link>
+
+        </Card>
         {
               (post.userProfileId === userProfileId)
                 ? <ListGroupItem><Link to={`/AddTagForm/post/${post.id}`}><h6>Manage Tags</h6></Link></ListGroupItem>
                 : ""
             }
-          {/* <ListGroup>
-            {post.title.map(c => (
-              <ListGroupItem>{c.content}</ListGroupItem>
-            ))}
-          </ListGroup> */}
         </div>
       </div>
     </div>
