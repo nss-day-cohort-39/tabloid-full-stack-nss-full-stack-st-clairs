@@ -3,7 +3,6 @@ import { Card, CardImg, CardBody } from "reactstrap";
 import { ListGroup, ListGroupItem } from 'reactstrap'
 import { PostContext } from '../providers/PostProvider'
 import { useParams, useHistory, Link } from 'react-router-dom'
-import { useParams, Link } from 'react-router-dom'
 import { Post } from './Post'
 import { TagsOnPost } from "./Tag/TagsOnPost";
 
@@ -39,7 +38,7 @@ const PostDetails = () => {
                 <p>{post.content}</p>
                 <p>{post.publishDateTime}</p>
                 <p>{post.category.name}</p>
-  <ListGroupItem><div className="postTags"> <strong>Tags: </strong>  {post.postTags.map(pt => <TagsOnPost key={pt.id} postTag={pt} />)}</div></ListGroupItem>
+            <ListGroupItem><div className="postTags"> <strong>Tags: </strong>  {post.postTags.map(pt => <TagsOnPost key={pt.id} postTag={pt} />)}</div></ListGroupItem>
             </CardBody>
         </Card>
 

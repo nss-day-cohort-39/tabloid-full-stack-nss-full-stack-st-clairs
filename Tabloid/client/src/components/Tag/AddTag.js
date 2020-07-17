@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Card, CardBody } from "reactstrap";
 import { PostContext } from "../../providers/PostProvider";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+
 
 
 export const AddTag = ({ tag }) => {
+    const history = useHistory();
 
     const { addTagtoPost, removeTagFromPost, getPost } = useContext(PostContext);
     const { id } = useParams();
@@ -17,11 +19,11 @@ export const AddTag = ({ tag }) => {
 
 
     const addThisTag = (tagId) => {
-        addTagtoPost({
+       return addTagtoPost({
             postId: parseInt(id),
             TagId: tagId
         }).then(() => {
-            getPost(parseInt(id)).then(setPost)
+            getPost(parseInt(id)).then(setPost).then(() => history.push(`/posts/${post.id}`));
         })
     }
 
@@ -54,7 +56,7 @@ export const AddTag = ({ tag }) => {
                                             evt.preventDefault() // Prevent browser from submitting the form
                                             const postTag = post.postTags.find(pt => pt.tagId === tag.id)
                                             removeTagFromPost(postTag.id).then(() => {
-                                                getPost(parseInt(id)).then(setPost)
+                                                getPost(parseInt(id)).then(setPost).then(() => history.push(`/posts/${post.id}`))
                                             })
                                         }}
                                     className="btn btn-danger">

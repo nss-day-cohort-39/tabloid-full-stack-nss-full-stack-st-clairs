@@ -54,8 +54,8 @@ export const PostProvider = (props) => {
             }).then(resp => resp.json()));
     };
 
-    const addTagtoPost = (postTag) =>
-        getToken().then((token) =>
+    const addTagtoPost = (postTag) => {
+       return getToken().then((token) =>
             fetch(`/api/post/addtag`, {
                 method: "POST",
                 headers: {
@@ -69,7 +69,7 @@ export const PostProvider = (props) => {
                 }
                 else { throw new Error("Unauthorized"); }
             }));
-
+        }
     const removeTagFromPost = (id) => {
         return getToken().then((token) =>
             fetch(`/api/post/addtag/${id}`, {

@@ -33,6 +33,8 @@ namespace Tabloid.Repositories
             return _context.Post.Include(p => p.UserProfile)
                                 .Include(p => p.Comments)
                                 .Include(p => p.Category)
+                                .Include(p => p.PostTags)
+                                .ThenInclude(pt => pt.Tag)
                                 .OrderByDescending(p => p.CreateDateTime)
                                 .FirstOrDefault(p => p.Id == id);
         }
@@ -42,6 +44,8 @@ namespace Tabloid.Repositories
             return _context.Post.Include(p => p.UserProfile)
                             .Include(p => p.Comments)
                             .Include(p => p.Category)
+                            .Include(p => p.PostTags)
+                            .ThenInclude(pt => pt.Tag)
                             .Where(p => p.UserProfileId == id)
                             .OrderByDescending(p => p.CreateDateTime)
                             .ToList();
