@@ -47,13 +47,13 @@ export const PostProvider = (props) => {
     const deletePost = (id) => {
         return getToken().then((token) =>
             fetch(apiUrl + `/${id}`, {
-                method: "DELETE", 
+                method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
             })).then(getAllPosts);
-        }
+    }
 
     const getPost = (id) => {
         return getToken().then((token) =>
@@ -63,12 +63,44 @@ export const PostProvider = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             }).then(resp => resp.json()));
-         };
+    };
+
+    const addTagtoPost = (postTag) => {
+       return getToken().then((token) =>
+            fetch(`/api/post/addtag`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(postTag),
+            }).then(resp => {
+                if (resp.ok) {
+                    return resp.json();
+                }
+                else { throw new Error("Unauthorized"); }
+            }));
+        }
+    const removeTagFromPost = (id) => {
+        return getToken().then((token) =>
+            fetch(`/api/post/addtag/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then((resp) => {
+                if (resp.ok) {
+                    return;
+                }
+                else { throw new Error("Failed to delete post.") }
+            })
+        );
+    };
+
 
     return (
         <PostContext.Provider value={{
-
-            posts, getAllPosts, addPost, deletePost, getPost, getAllPosts, updatePost
+            posts, getAllPosts, addPost, deletePost, getPost, addTagtoPost, removeTagFromPost, getAllPosts, updatePost
         }}>
             {props.children}
         </PostContext.Provider>

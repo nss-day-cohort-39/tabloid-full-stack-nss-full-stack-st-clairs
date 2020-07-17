@@ -22,15 +22,6 @@ export default function Header() {
         <NavbarBrand tag={RRNavLink} to="/">Tabloid</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            { /* When isLoggedIn === true, we will render the Home link */}
-            {isLoggedIn &&
-              <NavItem>
-                <NavLink tag={RRNavLink} to="/">Home</NavLink>
-              </NavItem>
-            }
-          </Nav>
-
 
           <Nav className="mr-auto" navbar>
             {isLoggedIn &&
@@ -49,14 +40,6 @@ export default function Header() {
           </Nav>
 
           <Nav className="mr-auto" navbar>
-            {isLoggedIn &&
-              <NavItem>
-                <NavLink tag={RRNavLink} to="/Category">Category Management</NavLink>
-              </NavItem>
-            }
-          </Nav>
-
-          <Nav className="mr-auto" navbar>
             { /* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn &&
               <NavItem>
@@ -68,7 +51,23 @@ export default function Header() {
           <Nav className="mr-auto" navbar>
             {isLoggedIn &&
               <NavItem>
+                <NavLink tag={RRNavLink} to="/categories">Category Management</NavLink>
+              </NavItem>
+            }
+          </Nav>
+
+          <Nav className="mr-auto" navbar>
+            {isLoggedIn &&
+              <NavItem>
                 <NavLink tag={RRNavLink} to="/tags">Tag Management</NavLink>
+              </NavItem>
+            }
+          </Nav>
+
+          <Nav className="mr-auto" navbar>
+            {isLoggedIn &&
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/profiles">Profiles</NavLink>
               </NavItem>
             }
           </Nav>

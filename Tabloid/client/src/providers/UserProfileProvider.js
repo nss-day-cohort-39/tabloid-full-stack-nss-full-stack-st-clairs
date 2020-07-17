@@ -11,12 +11,14 @@ export function UserProfileProvider(props) {
   const userProfile = sessionStorage.getItem("userProfile");
   const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
 
+
   const [isFirebaseReady, setIsFirebaseReady] = useState(false);
   useEffect(() => {
     firebase.auth().onAuthStateChanged((u) => {
       setIsFirebaseReady(true);
     });
   }, []);
+
 
   const login = (email, pw) => {
     return firebase.auth().signInWithEmailAndPassword(email, pw)
@@ -48,7 +50,31 @@ export function UserProfileProvider(props) {
 
   const getUserProfile = (firebaseUserId) => {
     return getToken().then((token) =>
-      fetch(`${apiUrl}/${firebaseUserId}`, {
+      fetch(`${apiUrl}/fbuId/${firebaseUserId}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(resp => resp.json()));
+  };
+
+  const [userProfiles, setUserProfiles] = useState([])
+
+  const getUserProfiles = () => {
+    return getToken().then((token) =>
+      fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(resp => resp.json())
+        .then(setUserProfiles))
+  }
+
+  const getProfile = (id) => {
+    return getToken().then((token) =>
+      fetch(apiUrl + `/${id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`
@@ -67,8 +93,9 @@ export function UserProfileProvider(props) {
         body: JSON.stringify(userProfile)
       }).then(resp => resp.json()));
   };
+
   return (
-    <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register, getToken }}>
+    <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register, getToken, userProfiles, getUserProfiles, getProfile }}>
       {isFirebaseReady
         ? props.children
         : <Spinner className="app-spinner dark" />}

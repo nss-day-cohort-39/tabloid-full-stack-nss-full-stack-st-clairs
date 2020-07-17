@@ -77,6 +77,36 @@ namespace Tabloid.Controllers
             _postRepository.Delete(id);
             return NoContent();
         }
+        [HttpPost("addtag")]
+        public IActionResult Post(PostTag postTag)
+        {
+            var currentUserProfile = GetCurrentUserProfile();
+            var post = _postRepository.GetById(postTag.PostId);
+
+            if (currentUserProfile.Id != post.UserProfileId)
+            {
+                return Unauthorized();
+            }
+            _postRepository.InsertTag(postTag);
+            return CreatedAtAction("Get", new { id = postTag.Id }, postTag);
+        }
+
+        [HttpDelete("addtag/{id}")]
+        public IActionResult DeletePostTag(int id)
+        {
+            var currentUserProfile = GetCurrentUserProfile();
+            var postTag = _postRepository.GetPostTagById(id);
+
+            var post = _postRepository.GetById(postTag.PostId);
+
+            if (currentUserProfile.Id != post.UserProfileId)
+            {
+                return Unauthorized();
+            }
+
+            _postRepository.RemoveTag(id);
+            return NoContent();
+        }
 
         private UserProfile GetCurrentUserProfile()
         {

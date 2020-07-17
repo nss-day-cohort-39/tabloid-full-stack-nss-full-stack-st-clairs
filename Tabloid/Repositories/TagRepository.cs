@@ -17,7 +17,7 @@ namespace Tabloid.Repositories
 
         public List<Tag> GetAll()
         {
-            return _context.Tag.OrderByDescending(c => c.Name).ToList();
+            return _context.Tag.OrderBy(c => c.Name).ToList();
         }
 
         public void Add(Tag tag)
@@ -43,7 +43,5 @@ namespace Tabloid.Repositories
             _context.Tag.Remove(tag);
             _context.SaveChanges();
         }
-
-
     }
 }

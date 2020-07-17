@@ -1,30 +1,33 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext } from "react";
 import { Card, CardBody, Button, ModalBody, Modal, ModalHeader } from "reactstrap";
-import { CategoryContext } from "../providers/CategoryProvider";
+import { CommentContext } from "../providers/CommentProvider";
 
-const Category = ({ category }) => {
+export const Comment = ({ comment }) => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
-    const name = useRef()
+    const { deleteComment } = useContext(CommentContext)
 
-    const { deleteCategory, updateCategory } = useContext(CategoryContext)
-    const [editModal, setEditModal] = useState(false)
-    const toggleEdit = () => setEditModal(!editModal)
+    // const [editModal, setEditModal] = useState(false)
+    // const toggleEdit = () => setEditModal(!editModal)
 
-    const categoryEdit = () => {
-        updateCategory({
-            id: category.id,
-            name: name.current.value
-        }).then(toggleEdit)
-    }
+    // const commentEdit = () => {
+    //     updateCategory({
+    //         id: category.id,
+    //         name: name.current.value
+    //     }).then(toggleEdit)
+    // }
 
     return (
-        <Card>
+        <Card className="">
+            <p className="text-left px-2">Commented by: {comment.userProfile.displayName}</p>
             <CardBody>
-                <p>{category.name}</p>
+                <p>Subject: {comment.subject}</p>
+                <p>Content: {comment.content}</p>
+                <p>Comment Date: {comment.createDateTime}</p>
+                
                 <div>
-                    <Button color="warning" onClick={toggleEdit}>Edit</Button>
+                    {/* <Button color="warning" onClick={toggleEdit}>Edit</Button>
                     <Modal isOpen={editModal} toggle={toggleEdit}>
                         <ModalHeader toggle={toggleEdit}>
                             Edit {category.name}</ModalHeader>
@@ -60,13 +63,13 @@ const Category = ({ category }) => {
                                 </div>
                             </div>
                         </ModalBody>
-                    </Modal>
+                    </Modal> */}
 
                     <Button color="danger" onClick={toggle}>Delete</Button>
 
                     <Modal isOpen={modal} toggle={toggle}>
                         <ModalHeader toggle={toggle}>
-                            Are you sure you want to delete {category.name}?</ModalHeader>
+                            Are you sure you want to delete {comment.Content}?</ModalHeader>
 
                         <ModalBody>
                             <button type="submit"
@@ -81,7 +84,7 @@ const Category = ({ category }) => {
                                 onClick={
                                     evt => {
                                         evt.preventDefault()
-                                        deleteCategory(category.id).then(toggle)
+                                        deleteComment(comment).then(toggle)
                                     }}
                                 className="btn btn-danger">
                                 Delete</button>
@@ -92,5 +95,3 @@ const Category = ({ category }) => {
         </Card>
     );
 };
-
-export default Category;

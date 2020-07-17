@@ -3,14 +3,20 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 import Login from "./Login";
 import Register from "./Register";
-import Hello from "./Hello";
 import { PostList } from "./PostList";
 import PostForm from './PostForm'
 import { TagList } from "../components/Tag/TagList";
 import CategoryList from "./CategoryList";
 import { UserPostList } from "./UserPostList";
 import PostDetails from "./PostDetails";
+<<<<<<< HEAD
 import { EditPostForm } from "./EditPostForm";
+=======
+import { CommentList } from "./CommentList";
+import { UserProfileList } from "./UserProfileList";
+import { AddTagForm } from "./Tag/AddTagForm";
+import UserProfileDetails from "./UserProfileDetails";
+>>>>>>> master
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -19,7 +25,7 @@ export default function ApplicationViews() {
     <main>
       <Switch>
         <Route path="/" exact>
-          {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
+          {isLoggedIn ? <Login /> : <Redirect to="/login" />}
         </Route>
     
         <Route path="/posts" exact>
@@ -27,11 +33,11 @@ export default function ApplicationViews() {
         </Route>
 
         <Route path='/posts/add' exact>
-          <PostForm />
+          {isLoggedIn ? <PostForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route path='/posts/:id' exact>
-          <PostDetails />
+          {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
         </Route>
 
         <Route path='/posts/update/:id' exact>
@@ -42,6 +48,10 @@ export default function ApplicationViews() {
           {isLoggedIn ? <UserPostList /> : <Redirect to="/login" />}
         </Route>
 
+        <Route path="/comments/:id" exact>
+          {isLoggedIn ? <CommentList /> : <Redirect to="/login" />}
+        </Route>
+
         <Route path="/login">
           <Login />
         </Route>
@@ -50,13 +60,26 @@ export default function ApplicationViews() {
           <Register />
         </Route>
 
-        <Route path="/category">
-          <CategoryList />
+        <Route path="/categories">
+          {isLoggedIn ? <CategoryList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/tags">
-          <TagList />
+          {isLoggedIn ? <TagList /> : <Redirect to="/login" />}
         </Route>
+
+        <Route path='/profiles/:id' exact>
+          {isLoggedIn ? <UserProfileDetails /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/profiles">
+          {isLoggedIn ? <UserProfileList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/addTagForm/post/:id">
+          {isLoggedIn ? <AddTagForm /> : <Redirect to="/login" />}
+        </Route>
+
 
       </Switch>
     </main>
