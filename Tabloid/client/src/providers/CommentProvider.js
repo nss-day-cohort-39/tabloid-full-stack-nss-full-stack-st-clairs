@@ -43,15 +43,15 @@ export const CommentProvider = (props) => {
                 .then(getCommentsByPostId))
     };
 
-    const deleteComment = (comment) => {
+    const deleteComment = (id) => {
         return getToken().then((token) =>
-            fetch(apiUrl + `/${comment.id}`, {
+            fetch(apiUrl + `/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
-            })).then(() => getCommentsByPostId(comment.post.id))
+            })).then(() => getCommentsByPostId(id))
     };
 
     return (
