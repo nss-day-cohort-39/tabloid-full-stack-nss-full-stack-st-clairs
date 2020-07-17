@@ -3,6 +3,7 @@ using Tabloid.Data;
 using Tabloid.Repositories;
 using Tabloid.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Tabloid.Controllers
 {
@@ -12,9 +13,13 @@ namespace Tabloid.Controllers
     public class CommentController : ControllerBase
     {
         private readonly CommentRepository _commentRepository;
+        private readonly UserProfileRepository _userProfileRepository;
+
+
         public CommentController(ApplicationDbContext context)
         {
             _commentRepository = new CommentRepository(context);
+            _userProfileRepository = new UserProfileRepository(context);
         }
 
         [HttpGet]
@@ -62,8 +67,20 @@ namespace Tabloid.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            var user = GetCurrentUserProfile();
+            var comment = _commentRepository.GetById(id);
+            if (user.Id != comment.UserProfileId)
+            {
+                return Forbid();
+            }
             _commentRepository.Delete(id);
             return NoContent();
+        }
+
+        private UserProfile GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }

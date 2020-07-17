@@ -51,7 +51,7 @@ export const CommentProvider = (props) => {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
-            })).then(() => getCommentsByPostId(comment.post.id))
+            })).then(() => getCommentsByPostId(comment.postId))
     };
 
     return (

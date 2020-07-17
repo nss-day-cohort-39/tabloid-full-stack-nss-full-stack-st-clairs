@@ -43,7 +43,5 @@ namespace Tabloid.Repositories
             _context.Tag.Remove(tag);
             _context.SaveChanges();
         }
-
-
     }
 }

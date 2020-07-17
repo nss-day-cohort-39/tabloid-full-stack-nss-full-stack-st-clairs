@@ -11,7 +11,6 @@ namespace Tabloid.Models
         [Required]
         public string Title { get; set; }
 
-
         public string ImageLocation { get; set; }
 
         public string Content { get; set; }
