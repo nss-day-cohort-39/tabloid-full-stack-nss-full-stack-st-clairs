@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Card, CardImg, CardBody, ModalHeader, ModalBody, Modal, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { UserPostContext } from "../providers/UserPostProvider";
+import { EditPostForm } from "./EditPostForm";
 
 export const UserPost = ({ post }) => {
     const { deletePost } = useContext(UserPostContext)
@@ -20,16 +21,7 @@ export const UserPost = ({ post }) => {
                 <p>Category: {post.category.name}</p>
                 <p>Created: {post.createDateTime}</p>
                 <div className="PostCardBody">
-                    <div>
-                        <button type="submit"
-                            onClick={
-                                evt => {
-                                    evt.preventDefault()
-                                }}
-                            className="btn btn-primary">
-                            Edit
-                        </button>
-                        <Button color="danger" onClick={toggle}>Delete</Button>
+                    <div><Button color="danger" onClick={toggle}>Delete</Button>
                         <Modal isOpen={modal} toggle={toggle}>
                             <ModalHeader toggle={toggle}>
                                 Are you sure you want to delete {post.title}?
@@ -56,8 +48,17 @@ export const UserPost = ({ post }) => {
                             </ModalBody>
                         </Modal>
                     </div>
+                    <div><Button color="warning" onClick={toggle}>Edit</Button>
+                        <Modal isOpen={modal} toggle={toggle}>
+                            <ModalBody className="PostModalBody">
+                                <EditPostForm post={post} toggle={toggle}/>
+                            </ModalBody>
+                        </Modal>
+                    </div>
                 </div>
             </CardBody>
         </Card>
     )
 } 
+
+

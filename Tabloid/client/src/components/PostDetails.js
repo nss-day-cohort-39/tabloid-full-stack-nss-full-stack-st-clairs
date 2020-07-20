@@ -13,7 +13,6 @@ const PostDetails = () => {
   const { id } = useParams()
   const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
 
-
   useEffect(() => {
     getPost(id).then(setPost)
   }, [])
@@ -62,9 +61,6 @@ const PostDetails = () => {
             <div>
               {displayInput()}
             </div>
-            {/* <Link to={`/comments/add/${postId}`}>
-              <p>Add a Comment</p>
-            </Link> */}
           </Card>
           {
             (post.userProfileId === userProfile.id)
