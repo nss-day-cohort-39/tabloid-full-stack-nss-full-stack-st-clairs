@@ -38,7 +38,7 @@ export const UserProfile = ({ userProfile }) => {
                     <ModalBody >
                         <div className="form-group">
                             <label htmlFor='userProfileType'>User Types: </label>
-                            {/* <select
+                            <select
                                 defaultValue=''
                                 name='userType'
                                 ref={userType}
@@ -54,7 +54,7 @@ export const UserProfile = ({ userProfile }) => {
                                         {up.name}
                                     </option>
                                 ))}
-                            </select> */}
+                            </select>
                             <br />
                             <div className="">
                                 <button type="submit"
