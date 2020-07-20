@@ -1,23 +1,30 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { Card, CardBody, Button, ModalBody, Modal, ModalHeader } from "reactstrap";
 import { CommentContext } from "../providers/CommentProvider";
 
-export const Comment = ({ comment }) => {
+export const Comment = ({ comment, postId }) => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
-    const { deleteComment } = useContext(CommentContext)
+    const subject = useRef()
+    const content = useRef()
 
-    // const [editModal, setEditModal] = useState(false)
-    // const toggleEdit = () => setEditModal(!editModal)
+    const { deleteComment, updateComment} = useContext(CommentContext)
 
-    // const commentEdit = () => {
-    //     updateCategory({
-    //         id: category.id,
-    //         name: name.current.value
-    //     }).then(toggleEdit)
-    // }
+    const [editModal, setEditModal] = useState(false)
+    const toggleEdit = () => setEditModal(!editModal)
 
+    const commentEdit = (comment) => {
+        return updateComment({
+            id: parseInt(comment.id),
+            subject: subject.current.value,
+            content: content.current.value,
+            createDateTime: comment.createDateTime,
+            postId: postId,
+            userProfileId: comment.userProfile.id
+        }).then(toggleEdit)
+    }
+    
     return (
         <Card className="">
             <p className="text-left px-2">Commented by: {comment.userProfile.displayName}</p>
@@ -27,20 +34,30 @@ export const Comment = ({ comment }) => {
                 <p>Comment Date: {comment.createDateTime}</p>
                 
                 <div>
-                    {/* <Button color="warning" onClick={toggleEdit}>Edit</Button>
+                    <Button color="warning" onClick={toggleEdit}>Edit</Button>
                     <Modal isOpen={editModal} toggle={toggleEdit}>
                         <ModalHeader toggle={toggleEdit}>
-                            Edit {category.name}</ModalHeader>
+                            Edit {comment.content}</ModalHeader>
                         <ModalBody >
                             <div className="form-group">
-                                <input
+                            <input
                                     type="text"
-                                    id="name"
-                                    ref={name}
+                                    id="subject"
+                                    ref={subject}
                                     required
                                     autoFocus
                                     className="form-control"
-                                    defaultValue={category.name}
+                                    defaultValue={comment.subject}
+                                />
+                                <br />
+                                <input
+                                    type="text"
+                                    id="content"
+                                    ref={content}
+                                    required
+                                    autoFocus
+                                    className="form-control"
+                                    defaultValue={comment.content}
                                 />
                                 <br />
                                 <div className="">
@@ -56,14 +73,14 @@ export const Comment = ({ comment }) => {
                                         onClick={
                                             evt => {
                                                 evt.preventDefault()
-                                                categoryEdit(category)
+                                                commentEdit(comment)
                                             }}
                                         className="btn btn-success">
                                         Save Changes</button>
                                 </div>
                             </div>
                         </ModalBody>
-                    </Modal> */}
+                    </Modal>
 
                     <Button color="danger" onClick={toggle}>Delete</Button>
 
