@@ -14,6 +14,5 @@ namespace Tabloid.Data
                 public DbSet<Tag> Tag { get; set; }
                 public DbSet<Comment> Comment { get; set; }
                 public DbSet<PostTag> PostTag { get; set; }
-
     }
 }

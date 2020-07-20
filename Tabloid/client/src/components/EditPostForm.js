@@ -7,11 +7,11 @@ import { useHistory } from "react-router-dom";
 export const EditPostForm = (props) => {
   const { updatePost } = useContext(PostContext);
   const { categories, getAllCategories } = useContext(CategoryContext);
-  const [updatedPost, setPost] = useState(props.post);
+  const [profileUpdate, setPost] = useState(props.post);
   const history = useHistory();
 
   const handleControlledInputChange = (event) => {
-    const newPost = Object.assign({}, updatedPost);
+    const newPost = Object.assign({}, profileUpdate);
     newPost[event.target.name] = event.target.value;
     setPost(newPost);
   };
@@ -21,8 +21,8 @@ export const EditPostForm = (props) => {
   }, []);
 
   const editPost = () => {
-    updatedPost.categoryId = parseInt(updatedPost.categoryId);
-    updatePost(updatedPost).then(props.toggle).then(history.push(`/posts/${props.post.id}`));
+    profileUpdate.categoryId = parseInt(profileUpdate.categoryId);
+    updatePost(profileUpdate).then(props.toggle).then(history.push(`/posts/${props.post.id}`));
   };
 
   return (
