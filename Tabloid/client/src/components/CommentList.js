@@ -14,7 +14,7 @@ export const CommentList = () => {
         getCommentsByPostId(id);
         getPost(id).then(setPost)
     }, [])
-
+    debugger
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -24,7 +24,7 @@ export const CommentList = () => {
                     </Link>
                     <h1>Post: {post.title}</h1>
                     {comments.map((comment) => (
-                        <Comment key={comment.id} comment={comment}  postId={id}/>
+                        <Comment key={comment.id} comment={comment} postId={id} />
                     ))}
                 </div>
             </div>
