@@ -15,6 +15,7 @@ import { UserProfileList } from "./UserProfileList";
 import { AddTagForm } from "./Tag/AddTagForm";
 import UserProfileDetails from "./UserProfileDetails";
 import { CommentForm } from "./CommentForm";
+import { UserTypeForm } from "./UserTypeForm";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -25,7 +26,7 @@ export default function ApplicationViews() {
         <Route path="/" exact>
           {isLoggedIn ? <Login /> : <Redirect to="/login" />}
         </Route>
-    
+
         <Route path="/posts" exact>
           {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
         </Route>
@@ -54,20 +55,16 @@ export default function ApplicationViews() {
           {isLoggedIn ? <CommentForm /> : <Redirect to="/login" />}
         </Route>
 
-        <Route path="/login">
-          <Login />
-        </Route>
-
-        <Route path="/register">
-          <Register />
-        </Route>
-
         <Route path="/categories">
           {isLoggedIn ? <CategoryList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/tags">
           {isLoggedIn ? <TagList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/addTagForm/post/:id">
+          {isLoggedIn ? <AddTagForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route path='/profiles/:id' exact>
@@ -78,8 +75,16 @@ export default function ApplicationViews() {
           {isLoggedIn ? <UserProfileList /> : <Redirect to="/login" />}
         </Route>
 
-        <Route path="/addTagForm/post/:id">
-          {isLoggedIn ? <AddTagForm /> : <Redirect to="/login" />}
+        <Route path='/profiles/update/:id' exact>
+          <UserTypeForm />
+        </Route>
+
+        <Route path="/login">
+          <Login />
+        </Route>
+
+        <Route path="/register">
+          <Register />
         </Route>
 
 
