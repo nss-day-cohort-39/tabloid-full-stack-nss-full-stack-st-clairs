@@ -43,6 +43,19 @@ export const CommentProvider = (props) => {
                 .then(getCommentsByPostId))
     };
 
+    const updateComment = (comment) => {
+        
+            return getToken().then((token) =>
+                fetch(apiUrl + `/${comment.id}`, {
+                    method: "PUT",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(comment)
+                })).then(() => getCommentsByPostId(comment.postId))
+            }
+
     const deleteComment = (comment) => {
         return getToken().then((token) =>
             fetch(apiUrl + `/${comment.id}`, {
@@ -56,7 +69,7 @@ export const CommentProvider = (props) => {
 
     return (
         <CommentContext.Provider value={{
-            comments, getCommentsByPostId, getComment, addComment, deleteComment
+            comments, getCommentsByPostId, getComment, addComment, updateComment, deleteComment
         }}>
             {props.children}
         </CommentContext.Provider>
