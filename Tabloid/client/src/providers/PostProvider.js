@@ -99,7 +99,6 @@ export const PostProvider = (props) => {
         );
     };
 
-
     return (
         <PostContext.Provider value={{
             posts, getAllPosts, addPost, deletePost, getPost, addTagtoPost, removeTagFromPost, getAllPosts, updatePost

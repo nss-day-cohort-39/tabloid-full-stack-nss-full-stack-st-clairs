@@ -55,9 +55,16 @@ namespace Tabloid.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Comment comment)
         {
+            var user = GetCurrentUserProfile();
+
             if (id != comment.Id)
             {
                 return BadRequest();
+            }
+
+            if (user.Id != comment.UserProfileId)
+            {
+                return Forbid();
             }
 
             _commentRepository.Update(comment);
