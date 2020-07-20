@@ -21,13 +21,7 @@ export const UserPost = ({ post }) => {
                 <p>Category: {post.category.name}</p>
                 <p>Created: {post.createDateTime}</p>
                 <div className="PostCardBody">
-                    <div>
-                        <Link to={`/posts/update/${post.id}`}>
-                            <button>
-                                Edit
-                            </button>
-                        </Link>
-                        <Button color="danger" onClick={toggle}>Delete</Button>
+                    <div><Button color="danger" onClick={toggle}>Delete</Button>
                         <Modal isOpen={modal} toggle={toggle}>
                             <ModalHeader toggle={toggle}>
                                 Are you sure you want to delete {post.title}?
@@ -54,8 +48,17 @@ export const UserPost = ({ post }) => {
                             </ModalBody>
                         </Modal>
                     </div>
+                    <div><Button color="warning" onClick={toggle}>Edit</Button>
+                        <Modal isOpen={modal} toggle={toggle}>
+                            <ModalBody className="PostModalBody">
+                                <EditPostForm post={post} toggle={toggle}/>
+                            </ModalBody>
+                        </Modal>
+                    </div>
                 </div>
             </CardBody>
         </Card>
     )
 } 
+
+

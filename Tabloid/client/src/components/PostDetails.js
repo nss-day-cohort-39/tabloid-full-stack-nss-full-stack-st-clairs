@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { Card, CardImg, CardBody } from "reactstrap";
-import { ListGroup, ListGroupItem } from 'reactstrap'
+import { Card, CardImg, CardBody, ListGroupItem, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import { PostContext } from '../providers/PostProvider'
 import { useParams, useHistory, Link } from 'react-router-dom'
-import { Post } from './Post'
 import { TagsOnPost } from "./Tag/TagsOnPost";
+import { EditPostForm } from './EditPostForm';
+
 
 const PostDetails = () => {
   const [post, setPost] = useState()
@@ -15,6 +15,8 @@ const PostDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(!showModal);
 
+  const [editModal, setEditModal] = useState(false);
+  const toggleEdit = () => setEditModal(!editModal);
 
   useEffect(() => {
     getPost(id).then(setPost)
@@ -25,7 +27,7 @@ const PostDetails = () => {
   if (!post) {
     return null
   }
-debugger
+
   return (
     <div className='container'>
       <div className='row justify-content-center'>
@@ -40,6 +42,16 @@ debugger
                 <p>{post.category.name}</p>
             <ListGroupItem><div className="postTags"> <strong>Tags: </strong>  {post.postTags.map(pt => <TagsOnPost key={pt.id} postTag={pt} />)}</div></ListGroupItem>
             </CardBody>
+            <Button color="info" onClick={toggleEdit}>
+          {" "}
+          Edit{" "}
+        </Button>
+        <Modal isOpen={editModal}>
+        <ModalHeader>EDIT POST</ModalHeader>
+        <ModalBody>
+          <EditPostForm toggle={toggleEdit} post={post} />
+        </ModalBody>
+      </Modal>
 
             <Link to={`/comments/${id}`}>
             <p>View Comments</p>

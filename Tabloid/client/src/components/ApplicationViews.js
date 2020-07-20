@@ -9,14 +9,11 @@ import { TagList } from "../components/Tag/TagList";
 import CategoryList from "./CategoryList";
 import { UserPostList } from "./UserPostList";
 import PostDetails from "./PostDetails";
-<<<<<<< HEAD
 import { EditPostForm } from "./EditPostForm";
-=======
 import { CommentList } from "./CommentList";
 import { UserProfileList } from "./UserProfileList";
 import { AddTagForm } from "./Tag/AddTagForm";
 import UserProfileDetails from "./UserProfileDetails";
->>>>>>> master
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
