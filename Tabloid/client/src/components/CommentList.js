@@ -14,7 +14,7 @@ export const CommentList = () => {
         getCommentsByPostId(id);
         getPost(id).then(setPost)
     }, [])
-    debugger
+
     return (
         <div className="container">
             <div className="row justify-content-center">
