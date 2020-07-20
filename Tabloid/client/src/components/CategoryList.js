@@ -7,7 +7,6 @@ export default function CategoryList() {
     const [categoryInput, setInput] = useState(false)
     const name = useRef()
 
-
     useEffect(() => {
         getAllCategories();
     }, []);

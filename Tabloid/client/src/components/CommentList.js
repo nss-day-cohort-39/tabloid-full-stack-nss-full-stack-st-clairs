@@ -4,7 +4,6 @@ import { Comment } from "./Comment";
 import { useParams, Link } from "react-router-dom";
 import { PostContext } from "../providers/PostProvider";
 
-
 export const CommentList = () => {
     const [post, setPost] = useState({})
     const { comments, getCommentsByPostId } = useContext(CommentContext);
@@ -16,7 +15,6 @@ export const CommentList = () => {
         getPost(id).then(setPost)
     }, [])
 
-
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -26,7 +24,7 @@ export const CommentList = () => {
                     </Link>
                     <h1>Post: {post.title}</h1>
                     {comments.map((comment) => (
-                        <Comment key={comment.id} comment={comment} />
+                        <Comment key={comment.id} comment={comment}  postId={id}/>
                     ))}
                 </div>
             </div>
