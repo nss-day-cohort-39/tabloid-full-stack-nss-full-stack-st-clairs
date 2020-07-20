@@ -9,6 +9,7 @@ import { TagList } from "../components/Tag/TagList";
 import CategoryList from "./CategoryList";
 import { UserPostList } from "./UserPostList";
 import PostDetails from "./PostDetails";
+import { EditPostForm } from "./EditPostForm";
 import { CommentList } from "./CommentList";
 import { UserProfileList } from "./UserProfileList";
 import { AddTagForm } from "./Tag/AddTagForm";
@@ -23,7 +24,7 @@ export default function ApplicationViews() {
         <Route path="/" exact>
           {isLoggedIn ? <Login /> : <Redirect to="/login" />}
         </Route>
-
+    
         <Route path="/posts" exact>
           {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
         </Route>
@@ -34,6 +35,10 @@ export default function ApplicationViews() {
 
         <Route path='/posts/:id' exact>
           {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path='/posts/update/:id' exact>
+          <EditPostForm />
         </Route>
 
         <Route path="/userposts" exact>
