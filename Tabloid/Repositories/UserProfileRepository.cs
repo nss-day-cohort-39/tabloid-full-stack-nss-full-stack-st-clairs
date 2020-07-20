@@ -42,5 +42,11 @@ namespace Tabloid.Repositories
             _context.Add(userProfile);
             _context.SaveChanges();
         }
+
+        public void Update(UserProfile userProfile)
+        {
+            _context.Entry(userProfile).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
     }
 }

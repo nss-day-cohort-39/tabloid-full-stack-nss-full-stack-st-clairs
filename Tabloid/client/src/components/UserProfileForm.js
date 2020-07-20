@@ -1,139 +1,84 @@
-import React, { useContext, useRef, useEffect } from 'react'
-import { PostContext } from '../providers/PostProvider'
-import { useHistory } from 'react-router-dom'
-import { CategoryContext } from "../providers/CategoryProvider";
+// import React, { useContext, useRef } from "react"
+// import { useHistory } from "react-router-dom"
+// import { UserProfileContext } from "../providers/UserProfileProvider"
 
-export default props => {
-    const { addPost, posts } = useContext(PostContext)
-    const { categories, getAllCategories } = useContext(CategoryContext);
+// export default props => {
+//     const { editProfile } = useContext(UserProfileContext)
 
-    const title = useRef('title')
-    const content = useRef('content')
-    const category = useRef('category')
-    const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
-    const imageLocation = useRef('imageLocation')
-    const publishDateTime = useRef('publishDateTime')
-    const history = useHistory()
-    // debugger
-    const constructNewPost = () => {
+//     const history = useHistory();
 
-        const newPostObject = {
-            title: title.current.value,
-            content: content.current.value,
-            createDateTime: new Date(),
-            categoryId: parseInt(category.current.value),
-            userProfileId: userProfile.id,
-            imageLocation: imageLocation.current.value,
-            publishDateTime: publishDateTime.current.value,
-        }
-        if (publishDateTime.current.value === "") {
-            newPostObject.publishDateTime = null;
-        }
-
-        console.log(newPostObject)
-        return addPost(newPostObject).then(props)
-    }
+//     const firstName = useRef("firstName")
+//     const lastName = useRef("lastName")
+//     const userTypeId = useRef("userTypeId")
 
 
-    useEffect(() => {
-        getAllCategories();
-    }, []);
+//     const updateProfile = () => {
+//         // create a new post object
+//         const userProobj = {
+//             firstName: firstName.current.value,
+//             lastName: lastName.current.value,
+//             userTypeId: parseInt(userTypeId.current.value)
+//         }
+//         console.log(newPostObj)
+//         // and save it to the API.
+//         return addPost(newPostObj).then(props.toggler)
+//     }
 
-    return (
-        <form className='postForm'>
-            <h2 className='postForm__title'>New Post</h2>
-            <fieldset>
-                <div className='form-group'>
-                    <label htmlFor='postTitle'>Post title: </label>
-                    <input
-                        type='text'
-                        id='postTitle'
-                        ref={title}
-                        required
-                        autoFocus
-                        className='form-control'
-                        placeholder='Post title'
-                    />
-                </div>
-            </fieldset>
 
-            <fieldset>
-                <div className='form-group'>
-                    <label htmlFor='postContent'>Post content: </label>
-                    <input
-                        type='text'
-                        id='postContent'
-                        ref={content}
-                        required
-                        autoFocus
-                        className='form-control'
-                        placeholder='Post content'
-                    />
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <div className='form-group'>
-                    <label htmlFor='postCategory'>Category: </label>
-                    <select
-                        defaultValue=''
-                        name='category'
-                        ref={category}
-                        id='category'
-                        className='form-control'
-                        placeholder='category'
-                        required
-                        autoFocus
-                    >
-                        <option value='0'>Select a category</option>
-                        {categories.map(c => (
-                            <option key={c.id} value={c.id}>
-                                {c.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <div className='form-group'>
-                    <label htmlFor='postImageLocation'>Post imageLocation: </label>
-                    <input
-                        type='text'
-                        id='postImageLocation'
-                        ref={imageLocation}
-                        autoFocus
-                        className='form-control'
-                        placeholder='Post imageLocation'
-                    />
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <div className='form-group'>
-                    <label htmlFor='postPublishDateTime'>Post publishDateTime: </label>
-                    <input
-                        type='date'
-                        id='postPublishDateTime'
-                        ref={publishDateTime}
-                        autoFocus
-                        className='form-control'
-                        placeholder='Post publishDateTime'
-                    />
-                </div>
-            </fieldset>
-
-            <button
-                type='submit'
-                onClick={evt => {
-                    evt.preventDefault() // Prevent browser from submitting the form
-                    constructNewPost().then(p => history.push('/userposts'))
-
-                }}
-                className='btn btn-primary'
-            >
-                Save Post
-      </button>
-        </form>
-    )
-}
+//     return (
+//         <form className="PostForm">
+//             <fieldset>
+//                 <div className="form-group">
+//                     <label htmlFor="postTitle">Title: </label>
+//                     <input
+//                         type="text"
+//                         id="postTitle"
+//                         ref={firstName}
+//                         required
+//                         autoFocus
+//                         className="form-control"
+//                         placeholder="Title"
+//                     />
+//                 </div>
+//             </fieldset>
+//             <fieldset>
+//                 <div className="form-group">
+//                     <label htmlFor="imageUrl">Image/GIF: </label>
+//                     <input
+//                         type="text"
+//                         id="imageUrl"
+//                         ref={lastName}
+//                         required
+//                         autoFocus
+//                         className="form-control"
+//                         placeholder="Url to image"
+//                     />
+//                 </div>
+//             </fieldset>
+//             <fieldset>
+//                 <div className="form-group">
+//                     <label htmlFor="userProfileId">Assign to a User: </label>
+//                     <input
+//                         type="text"
+//                         id="userProfileId"
+//                         ref={userTypeId}
+//                         required
+//                         autoFocus
+//                         className="form-control"
+//                         placeholder="userProfileId goes here"
+//                     />
+//                 </div>
+//             </fieldset>
+//             <button type="submit"
+//                 onClick={
+//                     evt => {
+//                         evt.preventDefault() // Prevent browser from submitting the form
+//                         constructNewPost().then((p) => history.push("/"));
+//                     }
+//                 }
+//                 className="btn btn-primary">
+//                 Add Post
+//             </button>
+//         </form>
+//     )
+// }
