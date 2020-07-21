@@ -17,6 +17,64 @@ p {
     white-space: pre-wrap;
 }
 
+.tagHeader {
+  color: white;
+  text-align: center;
+}
+
+.tagStyleCard {
+  border: solid thin white;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.788);
+  max-width: 40%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.tagContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+
+}
+
+.addTagBtn {
+  text-align: center;
+  margin: 20px;
+}
+
+.tagbtns {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.tagEditBtn {
+  width: 70px;
+  margin-right: 5px;
+}
+
+button.tagbtn {
+  margin: 10px !important; 
+}
+
+.addFormStyle {
+  text-align: center;
+  max-width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.saveTagBtn {
+  margin: 10px;
+}
 h2 {
   color: white;
   text-align: center;

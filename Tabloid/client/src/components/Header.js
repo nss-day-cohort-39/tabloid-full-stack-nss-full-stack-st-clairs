@@ -53,7 +53,7 @@ export default function Header() {
           <Nav className="mr-auto" navbar>
             {isLoggedIn && userProfile.userTypeId === 1 &&
               <NavItem>
-                <NavLink tag={RRNavLink} to="/categories">Category Management</NavLink>
+                <NavLink tag={RRNavLink} to="/categories">Categorys</NavLink>
               </NavItem>
             }
           </Nav>
@@ -61,7 +61,7 @@ export default function Header() {
           <Nav className="mr-auto" navbar>
             {isLoggedIn && userProfile.userTypeId === 1 &&
               <NavItem>
-                <NavLink tag={RRNavLink} to="/tags">Tag Management</NavLink>
+                <NavLink tag={RRNavLink} to="/tags">Tags</NavLink>
               </NavItem>
             }
           </Nav>

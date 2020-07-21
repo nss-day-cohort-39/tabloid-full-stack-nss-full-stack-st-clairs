@@ -22,24 +22,28 @@ export const TagList = () => {
         if (tagInput === true) {
             return (
                 <div className="form-group">
-                    <input
-                        type="text"
-                        id="name"
-                        ref={name}
-                        required
-                        autoFocus
-                        className="form-control"
-                        placeholder="New Tag"
-                    />
-                    <button type="submit"
-                        onClick={
-                            evt => {
-                                evt.preventDefault()
-                                constructNewTag()
-                                setTagInput(false)
-                            }}
-                        className="btn btn-primary">
-                        Save Tag</button>
+                    <div className="addTagInput">
+                        <input
+                            type="text"
+                            id="name"
+                            ref={name}
+                            required
+                            autoFocus
+                            className="form-control"
+                            placeholder="New Tag"
+                        />
+                    </div>
+                    <div className="saveTagBtn">
+                        <button type="submit"
+                            onClick={
+                                evt => {
+                                    evt.preventDefault()
+                                    constructNewTag()
+                                    setTagInput(false)
+                                }}
+                            className="btn btn-primary">
+                            Save Tag</button>
+                    </div>
                 </div>
             )
         }
@@ -48,20 +52,22 @@ export const TagList = () => {
     return (
         <section>
             <div className="tagHead">
-                <h2>Tags</h2>
-                <button type="submit"
-                    onClick={
-                        evt => {
-                            evt.preventDefault() // Prevent browser from submitting the form
-                            setTagInput(true)
+                <h2 className="tagHeader">Tags</h2>
+                <div className="addTagBtn">
+                    <button type="submit"
+                        onClick={
+                            evt => {
+                                evt.preventDefault() // Prevent browser from submitting the form
+                                setTagInput(true)
+                            }
                         }
-                    }
-                    className="btn btn-primary">
-                    Add a Tag</button>
+                        className="btn btn-primary">
+                        Add</button>
+                </div>
             </div>
             <br />
-            <div>{displayTagInput()}</div>
-            <div className="yagContainer">
+            <div className="addFormStyle">{displayTagInput()}</div>
+            <div className="tagContainer">
                 {tags.map(t =>
                     <Tag key={t.id} tag={t} />)}
             </div>
