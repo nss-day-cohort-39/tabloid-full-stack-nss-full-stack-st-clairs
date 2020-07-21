@@ -19,6 +19,69 @@ p {
     white-space: pre-wrap;
 }
 
+.tagHeader {
+  color: white;
+  text-align: center;
+}
+
+.tagStyleCard {
+  border: solid thin white;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.788);
+  max-width: 40%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.tagContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+
+}
+
+.addTagBtn {
+  text-align: center;
+  margin: 20px;
+}
+
+.tagbtns {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.tagEditBtn {
+  width: 70px;
+  margin-right: 5px;
+}
+
+button.tagbtn {
+  margin: 10px !important; 
+}
+
+.addFormStyle {
+  text-align: center;
+  max-width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.saveTagBtn {
+  margin: 10px;
+}
+h2 {
+  color: white;
+  text-align: center;
+}
+
 body {
   background-image: url(maxresdefault.jpg);
   background-position: cover;
@@ -35,6 +98,56 @@ body {
   color: white;
   background-color: rgba(0, 0, 0, 0.788);
   max-width: 40%;
+}
+
+.register_box{
+  margin-left: 30%;
+  margin-right: 30%;
+  border: solid thin white;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.788);
+  max-width: 40%;
+}
+
+.profile_card {
+  border: solid thin white;
+  border-radius: 10px;
+  margin: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.788);
+  height: 200px;
+  width: 280px;
+}
+
+.profile_cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+}
+
+.upd_img {
+    max-width: 30%;
+}
+
+.upd_card {
+  max-width: 50%;
+}
+
+.upd_details {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  justify-content: space-evenly;
+}
+
+.profile_details {
+  border: solid thin white;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.788);
 }
 
 .navbar {
