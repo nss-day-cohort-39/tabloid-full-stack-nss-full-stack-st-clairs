@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import { Card, CardImg, CardBody } from "reactstrap";
 import { useParams } from 'react-router-dom'
 import { UserProfileContext } from '../providers/UserProfileProvider';
+import { format } from 'date-fns';
 
 const UserProfileDetails = () => {
     const [userProfile, setUserProfiles] = useState()
@@ -20,17 +21,20 @@ const UserProfileDetails = () => {
 
     return (
         <div className='container'>
-            <div className='row justify-content-center'>
-                <div className='col-sm-12 col-lg-6'>
-                    <Card className="m-4">
-                        <CardImg top src={userProfile.imageLocation} />
-                        <CardBody>
-                            <h2>{userProfile.firstName} {userProfile.lastName}</h2>
-                            <p>UserName: {userProfile.displayName}</p>
-                            <p>Published: {userProfile.email}</p>
-                            <p>Date Created: {userProfile.creationDateTime}</p>
-                            <p>UserType: {userProfile.userType.name}</p>
-                        </CardBody>
+            <div>
+                <div>
+                    <Card className="profile_details">
+                        <section className="upd_details">
+                            <CardImg className="upd_img" src={userProfile.imageLocation} />
+
+                            <CardBody className="upd_card">
+                                <h2>{userProfile.firstName} {userProfile.lastName}</h2>
+                                <p>UserName: {userProfile.displayName}</p>
+                                <p>Email: {userProfile.email}</p>
+                                <p>Date Created: {format(new Date(userProfile.createDateTime), 'MM/dd/yyyy')}</p>
+                                <p>UserType: {userProfile.userType.name}</p>
+                            </CardBody>
+                        </section>
                     </Card>
                 </div>
             </div>

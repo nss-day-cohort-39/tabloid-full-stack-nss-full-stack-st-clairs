@@ -18,13 +18,15 @@ export const UserProfileList = () => {
                 <div className="row justify-content-center">
                     <div className="user-cards-column">
                         <h2>Profiles</h2>
-                        {userProfiles.map((up) => (
-                            <UserProfile key={up.id} userProfile={up} />
-                        ))}
+                        <section className="profile_cards">
+                            {userProfiles.map((up) => (
+                                <UserProfile key={up.id} userProfile={up} />
+                            ))}
+                        </section>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 
 }
