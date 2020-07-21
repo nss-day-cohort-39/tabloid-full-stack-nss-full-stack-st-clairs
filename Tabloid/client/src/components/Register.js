@@ -28,7 +28,7 @@ export default function Register() {
 
   return (
     <Form onSubmit={registerClick}>
-      <fieldset>
+      <fieldset className="register_box">
         <FormGroup>
           <Label htmlFor="firstName">First Name</Label>
           <Input id="firstName" type="text" onChange={e => setFirstName(e.target.value)} />
