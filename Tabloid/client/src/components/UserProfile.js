@@ -10,7 +10,7 @@ export const UserProfile = ({ userProfile }) => {
     const toggle = () => setModal(!modal)
 
     return (
-        <Card className="m-1">
+        <Card className="profile_card">
             <CardBody>
                 <Link to={`/profiles/${userProfile.id}`}>
                     <strong>{userProfile.firstName} {userProfile.lastName}</strong>
