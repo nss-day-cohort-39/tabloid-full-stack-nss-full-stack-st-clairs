@@ -22,7 +22,8 @@ export const CommentList = () => {
                     <Link to={`/posts/${id}`}>
                         <p>Back to Post</p>
                     </Link>
-                    <h1>Post: {post.title}</h1>
+                    <h1>Comments</h1>
+                    <h3>Post: {post.title}</h3>
                     {comments.map((comment) => (
                         <Comment key={comment.id} comment={comment} postId={id} />
                     ))}

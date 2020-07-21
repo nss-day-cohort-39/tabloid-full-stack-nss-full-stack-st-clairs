@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef } from "react";
 import { Card, CardBody, Button, ModalBody, Modal, ModalHeader } from "reactstrap";
 import { CommentContext } from "../providers/CommentProvider";
+import { format } from "date-fns"
 
 export const Comment = ({ comment, postId }) => {
     const [modal, setModal] = useState(false)
@@ -9,7 +10,7 @@ export const Comment = ({ comment, postId }) => {
     const subject = useRef()
     const content = useRef()
 
-    const { deleteComment, updateComment} = useContext(CommentContext)
+    const { deleteComment, updateComment } = useContext(CommentContext)
 
     const [editModal, setEditModal] = useState(false)
     const toggleEdit = () => setEditModal(!editModal)
@@ -24,15 +25,15 @@ export const Comment = ({ comment, postId }) => {
             userProfileId: comment.userProfile.id
         }).then(toggleEdit)
     }
-    
+
     return (
         <Card className="">
             <p className="text-left px-2">Commented by: {comment.userProfile.displayName}</p>
             <CardBody>
                 <p>Subject: {comment.subject}</p>
                 <p>Content: {comment.content}</p>
-                <p>Comment Date: {comment.createDateTime}</p>
-                
+                <p>Comment Date: {format(new Date(comment.createDateTime), 'MM/dd/yyyy')}</p>
+
                 <div>
                     <Button color="warning" onClick={toggleEdit}>Edit</Button>
                     <Modal isOpen={editModal} toggle={toggleEdit}>
@@ -40,7 +41,7 @@ export const Comment = ({ comment, postId }) => {
                             Edit {comment.content}</ModalHeader>
                         <ModalBody >
                             <div className="form-group">
-                            <input
+                                <input
                                     type="text"
                                     id="subject"
                                     ref={subject}

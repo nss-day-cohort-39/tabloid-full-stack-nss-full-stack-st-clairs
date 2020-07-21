@@ -3,6 +3,7 @@ import { Card, CardImg, CardBody, ModalHeader, ModalBody, Modal, Button } from "
 import { Link } from "react-router-dom";
 import { UserPostContext } from "../providers/UserPostProvider";
 import { EditPostForm } from "./EditPostForm";
+import { format } from "date-fns"
 
 export const UserPost = ({ post }) => {
     const { deletePost } = useContext(UserPostContext)
@@ -22,7 +23,7 @@ export const UserPost = ({ post }) => {
                     <strong>{post.title}</strong>
                 </Link>
                 <p>Category: {post.category.name}</p>
-                <p>Created: {post.createDateTime}</p>
+                <p>Created: {format(new Date(post.createDateTime), 'MM/dd/yyyy')}</p>
                 <div className="PostCardBody">
                     <div><Button color="danger" onClick={toggle}>Delete</Button>
                         <Modal isOpen={modal} toggle={toggle}>
