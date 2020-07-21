@@ -16,3 +16,40 @@ p {
 .post p {
     white-space: pre-wrap;
 }
+
+body {
+  background-image: url(maxresdefault.jpg);
+  background-position: cover;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+
+.login_box{
+  margin-left: 30%;
+  margin-right: 30%;
+  border: solid thin white;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.788);
+  max-width: 40%;
+}
+
+.navbar {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.788) !important;
+}
+
+.nav-link{
+  color: rgb(160, 160, 160) !important;
+}
+
+.navbar-light .nav-item.active .nav-link,
+.navbar-light .nav-item .nav-link:active,
+.navbar-light .nav-item .nav-link:focus,
+.navbar-light .nav-item:hover .nav-link {
+    color: white !important;
+}
+.navbar-brand {
+  color: white !important;
+}
