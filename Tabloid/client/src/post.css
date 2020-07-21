@@ -10,6 +10,27 @@
     margin-bottom: 1rem;
 }
 
+.commentbtns {
+    
+}
+
+.addCommentBtn {
+    max-width: 15rem;
+    align-self: center;
+}
+
+.viewCommentBtn {
+    max-width: 15rem;
+    align-self: center;
+}
+
+.postTags {
+    color: white;
+    border-color: white;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
 .postTitle {
     text-align: center;
     color: white;
@@ -17,4 +38,5 @@
 
 .postItems {
     color: white;
+    margin-bottom: 1rem;
 }

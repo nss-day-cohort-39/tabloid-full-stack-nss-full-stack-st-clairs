@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { Card, CardImg, CardBody } from "reactstrap";
+import { Card, CardImg, CardBody, Button } from "reactstrap";
 import { ListGroupItem } from 'reactstrap'
 import { PostContext } from '../providers/PostProvider'
 import { useParams, Link } from 'react-router-dom'
@@ -46,34 +46,45 @@ const PostDetails = () => {
               <h3>{post.title}</h3>
             </div>
             <div className="postItems">
-              <p>{post.content}</p>
-              <p>{format(new Date(post.publishDateTime), 'MM/dd/yyyy')}</p>
-              <p>{post.category.name}</p>
-              <p>Posted by: {post.userProfile.displayName}</p>
+              Content: <br />
+              {post.content} <br /><br />
+              Date Published: <br />
+              {format(new Date(post.publishDateTime), 'MM/dd/yyyy')} <br /><br />
+              Category: <br />
+              {post.category.name} <br /><br />
+              Posted by: <br />
+              {post.userProfile.displayName} <br />
             </div>
-            <ListGroupItem><div className="postTags"> <strong>Tags: </strong>  {post.postTags.map(pt => <TagsOnPost key={pt.id} postTag={pt} />)}</div></ListGroupItem>
-          </CardBody>
-          <Link to={`/comments/${id}`}>
-            <p>View Comments</p>
-          </Link>
-          <button type="submit"
-            onClick={
-              evt => {
-                evt.preventDefault()
-                setInput(true)
-              }
+            {
+              (post.userProfileId === userProfile.id)
+                ? <Button><Link to={`/AddTagForm/post/${post.id}`}><h6>Manage Tags</h6></Link></Button>
+                : ""
             }
-            className="btn btn-primary">
-            Add Comment</button>
+            <ListGroupItem className="postTags"><div className="postTags"> <strong>Tags: </strong>  {post.postTags.map(pt => <TagsOnPost key={pt.id} postTag={pt} />)}</div></ListGroupItem>
+            <div></div>
+          </CardBody>
+          <div className="commentBtns">
+            <Button className="viewCommentBtn" color="secondary">
+              <Link to={`/comments/${id}`}>
+                <p>View Comments</p>
+              </Link>
+            </Button>
+            <Button type="submit"
+              color="primary"
+              onClick={
+                evt => {
+                  evt.preventDefault()
+                  setInput(true)
+                }
+              }
+              className="addCommentBtn">
+              Add Comment
+            </Button>
+          </div>
           <div>
             {displayInput()}
           </div>
         </Card>
-        {
-          (post.userProfileId === userProfile.id)
-            ? <ListGroupItem><Link to={`/AddTagForm/post/${post.id}`}><h6>Manage Tags</h6></Link></ListGroupItem>
-            : ""
-        }
       </div>
     </div>
   )
