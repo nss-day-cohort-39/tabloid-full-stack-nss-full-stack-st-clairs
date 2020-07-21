@@ -48,7 +48,7 @@ export const TagList = () => {
     return (
         <section>
             <div className="tagHead">
-                <h2>Tags</h2>
+                <h2 class="tagHeader">Tags</h2>
                 <button type="submit"
                     onClick={
                         evt => {
@@ -57,7 +57,7 @@ export const TagList = () => {
                         }
                     }
                     className="btn btn-primary">
-                    Add a Tag</button>
+                    Add</button>
             </div>
             <br />
             <div>{displayTagInput()}</div>

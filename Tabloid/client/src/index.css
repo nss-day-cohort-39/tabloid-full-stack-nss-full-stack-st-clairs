@@ -16,3 +16,20 @@ p {
 .post p {
     white-space: pre-wrap;
 }
+
+
+.tagHeader {
+  color: white;
+}
+
+.tagStyleCard {
+  background-color: rgb(106, 137, 240);
+  width: 220px;
+  border-radius: 5%;
+  height: 220px;
+  text-align: center;
+  padding: 30px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
