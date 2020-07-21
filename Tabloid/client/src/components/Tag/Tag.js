@@ -25,8 +25,8 @@ export const Tag = ({ tag }) => {
             <CardBody >
                 <div className="TagCardBody">
                     <h4>{tag.name}</h4>
-                    <div>
-                        <Button class="sizeButtons" color="warning" onClick={toggleEdit}>Edit</Button>
+                    <div className="tagbtns">
+                        <Button className="tagBtn, tagEditBtn" color="warning" onClick={toggleEdit}>Edit</Button>
 
                         <Modal isOpen={editModal} toggle={toggleEdit}>
                             <ModalHeader toggle={toggleEdit}>
@@ -65,7 +65,7 @@ export const Tag = ({ tag }) => {
                             </ModalBody>
                         </Modal>
 
-                        <Button color="danger" class="sizeButtons" onClick={toggle}>Delete</Button>
+                        <Button color="danger" className="tagBtn" onClick={toggle}>Delete</Button>
 
                         <Modal isOpen={modal} toggle={toggle}>
                             <ModalHeader toggle={toggle}>
