@@ -5,15 +5,19 @@ import { format } from 'date-fns'
 
 export const Post = ({ post }) => {
     return (
-        <Card className="m-4">
-            <p className="text-left px-2">Posted by: {post.userProfile.displayName}</p>
+        <Card className="m-4 post">
             <CardImg top src={post.imageLocation} />
             <CardBody>
-                <Link to={`/posts/${post.id}`}>
-                    <strong>{post.title}</strong>
-                </Link>
-                <p>Category: {post.category.name}</p>
-                <p>Created: {format(new Date(post.createDateTime), 'MM/dd/yyyy')}</p>
+                <div className="postTitle">
+                    <Link to={`/posts/${post.id}`}>
+                        <h3>{post.title}</h3>
+                    </Link>
+                </div>
+                <div className="postItems">
+                    <p>Category: {post.category.name}</p>
+                    <p>Created: {format(new Date(post.createDateTime), 'MM/dd/yyyy')}</p>
+                    <p>Posted by: {post.userProfile.displayName}</p>
+                </div>
             </CardBody>
         </Card>
     );

@@ -1,0 +1,20 @@
+.post {
+    background-color: rgba(0, 0, 0, 0.788);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.postDetails {
+    background-color: rgba(0, 0, 0, 0.788);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.postTitle {
+    text-align: center;
+    color: white;
+}
+
+.postItems {
+    color: white;
+}
