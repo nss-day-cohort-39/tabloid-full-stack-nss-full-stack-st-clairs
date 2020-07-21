@@ -60,7 +60,7 @@ export function UserProfileProvider(props) {
 
   const [userProfiles, setUserProfiles] = useState([])
 
-  const getUserProfiles = () => {
+  const getUserProfiles = (userProfile) => {
     return getToken().then((token) =>
       fetch(apiUrl, {
         method: "GET",
@@ -69,8 +69,9 @@ export function UserProfileProvider(props) {
         }
       })
         .then(resp => resp.json())
-        .then(setUserProfiles))
-  }
+        .then(setUserProfiles)
+    )
+  };
 
   const getProfile = (id) => {
     return getToken().then((token) =>

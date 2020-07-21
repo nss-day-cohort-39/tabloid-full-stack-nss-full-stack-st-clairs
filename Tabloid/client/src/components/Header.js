@@ -12,6 +12,8 @@ import {
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
 export default function Header() {
+  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+
   const { isLoggedIn, logout } = useContext(UserProfileContext);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -49,7 +51,7 @@ export default function Header() {
           </Nav>
 
           <Nav className="mr-auto" navbar>
-            {isLoggedIn &&
+            {isLoggedIn && userProfile.userTypeId === 1 &&
               <NavItem>
                 <NavLink tag={RRNavLink} to="/categories">Category Management</NavLink>
               </NavItem>
@@ -57,7 +59,7 @@ export default function Header() {
           </Nav>
 
           <Nav className="mr-auto" navbar>
-            {isLoggedIn &&
+            {isLoggedIn && userProfile.userTypeId === 1 &&
               <NavItem>
                 <NavLink tag={RRNavLink} to="/tags">Tag Management</NavLink>
               </NavItem>
@@ -65,7 +67,7 @@ export default function Header() {
           </Nav>
 
           <Nav className="mr-auto" navbar>
-            {isLoggedIn &&
+            {isLoggedIn && userProfile.userTypeId === 1 &&
               <NavItem>
                 <NavLink tag={RRNavLink} to="/profiles">Profiles</NavLink>
               </NavItem>

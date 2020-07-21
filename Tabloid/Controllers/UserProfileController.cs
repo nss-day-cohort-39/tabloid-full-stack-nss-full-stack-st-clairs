@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System;
+using System.Security.Claims;
 using Tabloid.Data;
 using Tabloid.Models;
 using Tabloid.Repositories;
@@ -26,18 +27,34 @@ namespace Tabloid.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_userProfileRepository.GetAll());
+            var userProfile = GetCurrentUserProfile();
+            if (userProfile.UserTypeId == 1)
+            {
+                return Ok(_userProfileRepository.GetAll());
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var userProfile = _userProfileRepository.GetById(id);
-            if (userProfile == null)
-            {
-                return NotFound();
-            }
-            return Ok(userProfile);
+
+                var userProfile = GetCurrentUserProfile();
+                if (userProfile == null)
+                {
+                    return NotFound();
+                }
+                else if (userProfile.UserTypeId == 1)
+                {
+                    return Ok(_userProfileRepository.GetById(id));
+                }
+                else
+                {
+                    return Forbid();
+                }
         }
 
         [HttpPost]
@@ -62,6 +79,11 @@ namespace Tabloid.Controllers
 
             _userProfileRepository.Update(userProfile);
             return NoContent();
+        }
+                private UserProfile GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }
