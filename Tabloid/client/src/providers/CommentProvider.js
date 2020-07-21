@@ -39,22 +39,21 @@ export const CommentProvider = (props) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(comment)
-            }).then(resp => resp.json())
-                .then(getCommentsByPostId))
+            }).then(resp => resp.json()))
     };
 
     const updateComment = (comment) => {
-        
-            return getToken().then((token) =>
-                fetch(apiUrl + `/${comment.id}`, {
-                    method: "PUT",
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(comment)
-                })).then(() => getCommentsByPostId(comment.postId))
-            }
+
+        return getToken().then((token) =>
+            fetch(apiUrl + `/${comment.id}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(comment)
+            })).then(() => getCommentsByPostId(comment.postId))
+    }
 
     const deleteComment = (comment) => {
         return getToken().then((token) =>
