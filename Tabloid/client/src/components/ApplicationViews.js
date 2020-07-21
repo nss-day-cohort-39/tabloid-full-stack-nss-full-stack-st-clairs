@@ -18,6 +18,7 @@ import { UserTypeForm } from "./UserTypeForm";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
+  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
 
   return (
     <main>
@@ -51,23 +52,23 @@ export default function ApplicationViews() {
         </Route>
 
         <Route path="/categories">
-          {isLoggedIn ? <CategoryList /> : <Redirect to="/login" />}
+          {isLoggedIn && userProfile.userTypeId === 1 ? <CategoryList /> : <Redirect to="/posts" />}
         </Route>
 
         <Route path="/tags">
-          {isLoggedIn ? <TagList /> : <Redirect to="/login" />}
+          {isLoggedIn && userProfile.userTypeId === 1 ? <TagList /> : <Redirect to="/posts" />}
         </Route>
 
         <Route path="/addTagForm/post/:id">
-          {isLoggedIn ? <AddTagForm /> : <Redirect to="/login" />}
+          {isLoggedIn && userProfile.userTypeId === 1 ? <AddTagForm /> : <Redirect to="/posts" />}
         </Route>
 
         <Route path='/profiles/:id' exact>
-          {isLoggedIn ? <UserProfileDetails /> : <Redirect to="/login" />}
+          {isLoggedIn && userProfile.userTypeId === 1 ? <UserProfileDetails /> : <Redirect to="/posts" />}
         </Route>
 
         <Route path="/profiles">
-          {isLoggedIn ? <UserProfileList /> : <Redirect to="/login" />}
+          {isLoggedIn && userProfile.userTypeId === 1 ? <UserProfileList /> : <Redirect to="/posts" />}
         </Route>
 
         <Route path='/profiles/update/:id' exact>

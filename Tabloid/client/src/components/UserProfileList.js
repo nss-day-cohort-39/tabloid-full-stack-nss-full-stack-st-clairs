@@ -6,9 +6,11 @@ export const UserProfileList = () => {
 
     const { userProfiles, getUserProfiles } = useContext(UserProfileContext)
 
+
     useEffect(() => {
         getUserProfiles()
     }, []);
+
 
     return (
         <section>
