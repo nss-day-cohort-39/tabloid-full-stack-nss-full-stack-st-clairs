@@ -11,6 +11,9 @@ export const UserPost = ({ post }) => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
+    const [editModal, setEditModal] = useState(false)
+    const toggleEdit = () => setEditModal(!editModal)
+
     return (
         <Card className="postCard">
             <p className="text-left px-2">Posted by: {post.userProfile.displayName}</p>
@@ -49,10 +52,10 @@ export const UserPost = ({ post }) => {
                             </ModalBody>
                         </Modal>
                     </div>
-                    <div><Button color="warning" onClick={toggle}>Edit</Button>
-                        <Modal isOpen={modal} toggle={toggle}>
+                    <div><Button color="warning" onClick={toggleEdit}>Edit</Button>
+                        <Modal isOpen={editModal} toggle={toggleEdit}>
                             <ModalBody className="PostModalBody">
-                                <EditPostForm post={post} toggle={toggle} />
+                                <EditPostForm post={post} toggle={toggleEdit} />
                             </ModalBody>
                         </Modal>
                     </div>

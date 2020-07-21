@@ -97,7 +97,7 @@ export const EditPostForm = (props) => {
                 name="publishDateTime"
                 className="form-control"
                 placeholder="Edit publish date"
-                defaultValue={props.post.publishDateTime.split("T")[0]}
+                defaultValue={props.post.publishDateTime}
                 onChange={handleControlledInputChange}
               />
             </label>

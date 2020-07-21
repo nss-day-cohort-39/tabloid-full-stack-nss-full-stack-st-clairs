@@ -59,7 +59,7 @@ const PostDetails = () => {
                 }
               }
               className="btn btn-primary">
-              Add</button>
+              Add Comment</button>
             <div>
               {displayInput()}
             </div>
