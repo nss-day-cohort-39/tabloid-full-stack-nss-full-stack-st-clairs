@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, CardImg, CardBody } from "reactstrap";
 import { Link } from "react-router-dom"
+import { format } from 'date-fns'
+
 export const Post = ({ post }) => {
     return (
         <Card className="m-4">
@@ -11,7 +13,7 @@ export const Post = ({ post }) => {
                     <strong>{post.title}</strong>
                 </Link>
                 <p>Category: {post.category.name}</p>
-                <p>Created: {post.createDateTime}</p>
+                <p>Created: {format(new Date(post.createDateTime), 'MM/dd/yyyy')}</p>
             </CardBody>
         </Card>
     );

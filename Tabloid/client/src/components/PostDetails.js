@@ -5,6 +5,8 @@ import { PostContext } from '../providers/PostProvider'
 import { useParams, Link } from 'react-router-dom'
 import { TagsOnPost } from "./Tag/TagsOnPost";
 import { CommentForm } from './CommentForm';
+import { format } from 'date-fns'
+
 
 const PostDetails = () => {
   const [post, setPost] = useState()
@@ -42,7 +44,7 @@ const PostDetails = () => {
             <CardBody>
               <h4>{post.title}</h4>
               <p>{post.content}</p>
-              <p>{post.publishDateTime}</p>
+              <p>{format(new Date(post.publishDateTime), 'MM/dd/yyyy')}</p>
               <p>{post.category.name}</p>
               <ListGroupItem><div className="postTags"> <strong>Tags: </strong>  {post.postTags.map(pt => <TagsOnPost key={pt.id} postTag={pt} />)}</div></ListGroupItem>
             </CardBody>
