@@ -4,39 +4,86 @@
     margin-bottom: 1rem;
 }
 
-.postDetails {
-    background-color: rgba(0, 0, 0, 0.788);
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
+/* Post Details Styles */
+    .postDetails {
+        background-color: rgba(0, 0, 0, 0.788);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        /* text-align: center; */
+    }
 
-.commentbtns {
-    
-}
+    .backLink {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.678);
+        width: 8rem;
+    }
 
-.addCommentBtn {
-    max-width: 15rem;
-    align-self: center;
-}
+    .commentBtns {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }
 
-.viewCommentBtn {
-    max-width: 15rem;
-    align-self: center;
-}
+    .addCommentBtn {
+        max-width: 15rem;
+    }
 
-.postTags {
-    color: white;
-    border-color: white;
-    background-color: transparent;
-    border-radius: 10px;
-}
+    .viewCommentBtn {
+        max-width: 15rem;
+    }
 
-.postTitle {
-    text-align: center;
-    color: white;
-}
+    .postTagList {
+        color: white;
+        border-color: white;
+        background-color: transparent;
+        border-radius: 10px;
+    }
 
-.postItems {
-    color: white;
-    margin-bottom: 1rem;
-}
+    .postTitle {
+        text-align: center;
+        color: white;
+    }
+
+    .postItems {
+        color: white;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+        font-size: large;
+    }
+
+/* User Post Styles */
+    .userPost {
+        background-color: rgba(0, 0, 0, 0.788);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .userPostTitle {
+        text-align: center;
+        color: white;
+    }
+
+    .userPostItems {
+        color: white;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+        font-size: large;
+    }
+
+    .userPostBtns {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }

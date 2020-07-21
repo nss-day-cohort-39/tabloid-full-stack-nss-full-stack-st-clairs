@@ -15,16 +15,29 @@ export const UserPost = ({ post }) => {
     const toggleEdit = () => setEditModal(!editModal)
 
     return (
-        <Card className="postCard">
-            <p className="text-left px-2">Posted by: {post.userProfile.displayName}</p>
+        <Card className="userPost">
             <CardImg top src={post.imageLocation} />
             <CardBody>
-                <Link to={`/posts/${post.id}`}>
-                    <strong>{post.title}</strong>
-                </Link>
-                <p>Category: {post.category.name}</p>
-                <p>Created: {format(new Date(post.createDateTime), 'MM/dd/yyyy')}</p>
-                <div className="PostCardBody">
+                <div className="userPostTitle">
+                    <Link to={`/posts/${post.id}`}>
+                        <h3>{post.title}</h3>
+                    </Link>
+                </div>
+                <div className="userPostItems">
+                    <div>
+                        Date Created: <br />
+                        {format(new Date(post.createDateTime), 'MM/dd/yyyy')} <br /><br />
+                    </div>
+                    <div>
+                        Category: <br />
+                        {post.category.name} <br /><br />
+                    </div>
+                    <div>
+                        Posted by: <br />
+                        {post.userProfile.displayName} <br />
+                    </div>
+                </div>
+                <div className="userPostBtns">
                     <div><Button color="danger" onClick={toggle}>Delete</Button>
                         <Modal isOpen={modal} toggle={toggle}>
                             <ModalHeader toggle={toggle}>
