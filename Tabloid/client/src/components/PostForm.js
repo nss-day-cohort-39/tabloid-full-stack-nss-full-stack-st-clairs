@@ -98,7 +98,7 @@ export default props => {
 
         <fieldset>
           <div className='form-group'>
-            <label htmlFor='postImageLocation'>Post imageLocation: </label>
+            <label htmlFor='postImageLocation'>Post Image URL: </label>
             <input
               type='text'
               id='postImageLocation'
@@ -112,7 +112,7 @@ export default props => {
 
         <fieldset>
           <div className='form-group'>
-            <label htmlFor='postPublishDateTime'>Post publishDateTime: </label>
+            <label htmlFor='postPublishDateTime'>Post Publish Date Time: </label>
             <input
               type='date'
               id='postPublishDateTime'
