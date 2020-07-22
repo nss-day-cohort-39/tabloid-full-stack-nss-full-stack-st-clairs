@@ -26,6 +26,10 @@
         margin-left: 1rem;
     }
 
+    .commentForm {
+        color: white;
+    }
+
     .addCommentBtn {
         max-width: 15rem;
     }
