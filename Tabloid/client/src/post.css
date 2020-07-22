@@ -1,0 +1,119 @@
+.post {
+    background-color: rgba(0, 0, 0, 0.788);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: solid thin white;
+    border-radius: 10px;
+}
+
+/* Post Details Styles */
+    .postDetails {
+        background-color: rgba(0, 0, 0, 0.788);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border: solid thin white;
+        border-radius: 10px;
+    }
+
+    .commentBtns {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }
+
+    .commentForm {
+        color: white;
+    }
+
+    .addCommentBtn {
+        max-width: 15rem;
+    }
+
+    .viewCommentBtn {
+        max-width: 15rem;
+    }
+
+    .postTagList {
+        color: white;
+        border-color: white;
+        background-color: transparent;
+        border-radius: 10px;
+    }
+    
+    .tagsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+    }
+    
+    .tagCard {
+        border: solid thin white;
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.788);
+        max-width: 40%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mngTagBtn {
+        margin-bottom: 1rem;
+    }
+
+    .postTitle {
+        text-align: center;
+        color: white;
+    }
+
+    .postItems {
+        color: white;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+        font-size: large;
+    }
+
+/* User Post Styles */
+    .userPost {
+        background-color: rgba(0, 0, 0, 0.788);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border: solid thin white;
+        border-radius: 10px;
+    }
+
+    .userPostTitle {
+        text-align: center;
+        color: white;
+    }
+
+    .userPostItems {
+        color: white;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+        font-size: large;
+    }
+
+    .userPostBtns {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }

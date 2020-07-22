@@ -46,7 +46,7 @@ export const CommentForm = ({ postId }) => {
                 <div className='form-group'>
                     <label htmlFor='commentContent'>Comment content: </label>
                     <input
-                        type='text'
+                        type='textarea'
                         id='commentContent'
                         ref={content}
                         required

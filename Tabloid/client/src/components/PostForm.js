@@ -62,7 +62,7 @@ export default props => {
           <div className='form-group'>
             <label htmlFor='postContent'>Post content: </label>
             <input
-              type='text'
+              type='textarea'
               id='postContent'
               ref={content}
               required
