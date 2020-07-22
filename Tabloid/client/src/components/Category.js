@@ -20,11 +20,13 @@ const Category = ({ category }) => {
     }
 
     return (
-        <Card>
+        <Card className="cetagoryStyleCard">
             <CardBody>
-                <p>{category.name}</p>
-                <div>
-                    <Button color="warning" onClick={toggleEdit}>Edit</Button>
+                <h4>{category.name}</h4>
+                <div className="categorybtns">
+
+                    <Button className="categoryBtn, categoryEditBtn" color="warning" onClick={toggleEdit}>Edit</Button>
+
                     <Modal isOpen={editModal} toggle={toggleEdit}>
                         <ModalHeader toggle={toggleEdit}>
                             Edit {category.name}</ModalHeader>
@@ -62,7 +64,7 @@ const Category = ({ category }) => {
                         </ModalBody>
                     </Modal>
 
-                    <Button color="danger" onClick={toggle}>Delete</Button>
+                    <Button color="danger" className="categoryBtn" onClick={toggle}>Delete</Button>
 
                     <Modal isOpen={modal} toggle={toggle}>
                         <ModalHeader toggle={toggle}>

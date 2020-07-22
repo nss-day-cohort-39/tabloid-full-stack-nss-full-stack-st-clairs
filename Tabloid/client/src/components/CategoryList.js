@@ -29,15 +29,17 @@ export default function CategoryList() {
                         className="form-control"
                         placeholder="New Category"
                     />
-                    <button type="submit"
-                        onClick={
-                            evt => {
-                                evt.preventDefault()
-                                constructNewCategory()
-                                setInput(false)
-                            }}
-                        className="btn btn-primary">
-                        Save Category</button>
+                    <div className="savecategoryBtn">
+                        <button type="submit"
+                            onClick={
+                                evt => {
+                                    evt.preventDefault()
+                                    constructNewCategory()
+                                    setInput(false)
+                                }}
+                            className="btn btn-primary">
+                            Save Category</button>
+                    </div>
                 </div>
             )
         }
@@ -47,21 +49,23 @@ export default function CategoryList() {
         <section>
             <div>
                 <h2>Category Management</h2>
-                <button type="submit"
-                    onClick={
-                        evt => {
-                            evt.preventDefault()
-                            setInput(true)
+                <div className="addCategoryBtn">
+                    <button type="submit"
+                        onClick={
+                            evt => {
+                                evt.preventDefault()
+                                setInput(true)
+                            }
                         }
-                    }
-                    className="btn btn-primary">
-                    Add</button>
+                        className="btn btn-primary">
+                        Add</button>
+                </div>
             </div>
             <br />
-            <div>
+            <div className="addcategoryStyle">
                 {displayInput()}
             </div>
-            <div>
+            <div className="categoryContainer">
                 {categories.map(c =>
                     <Category key={c.id} category={c} />
                 )}

@@ -52,7 +52,7 @@ export const TagList = () => {
     return (
         <section>
             <div className="tagHead">
-                <h2 className="tagHeader">Tags</h2>
+                <h2 className="tagHeader">Tag Management</h2>
                 <div className="addTagBtn">
                     <button type="submit"
                         onClick={
