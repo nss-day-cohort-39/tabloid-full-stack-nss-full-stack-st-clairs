@@ -31,7 +31,7 @@ export const Tag = ({ tag }) => {
 
                         <Modal isOpen={editModal} toggle={toggleEdit}>
                             <ModalHeader toggle={toggleEdit}>
-                                Edit {tag.name}</ModalHeader>
+                                Update Tag</ModalHeader>
                             <ModalBody >
                                 <div className="form-group">
                                     <input
@@ -49,18 +49,18 @@ export const Tag = ({ tag }) => {
                                             onClick={
                                                 evt => {
                                                     evt.preventDefault() // Prevent browser from submitting the form
-                                                    toggleEdit()
+                                                    tagUpdate()
                                                 }}
-                                            className="btn btn-secondary">
-                                            Cancel</button>
+                                            className="btn btn-success button_margin">
+                                            Update</button>
                                         <button type="submit"
                                             onClick={
                                                 evt => {
                                                     evt.preventDefault() // Prevent browser from submitting the form
-                                                    tagUpdate()
+                                                    toggleEdit()
                                                 }}
-                                            className="btn btn-success">
-                                            Save Changes</button>
+                                            className="btn btn-secondary">
+                                            Cancel</button>
                                     </div>
                                 </div>
                             </ModalBody>
@@ -76,18 +76,18 @@ export const Tag = ({ tag }) => {
                                     onClick={
                                         evt => {
                                             evt.preventDefault()
-                                            toggle()
+                                            deleteTag(tag.id).then(toggle)
                                         }}
-                                    className="btn btn-primary">
-                                    Cancel</button>
+                                    className="btn btn-danger button_margin">
+                                    Delete</button>
                                 <button type="submit"
                                     onClick={
                                         evt => {
                                             evt.preventDefault()
-                                            deleteTag(tag.id).then(toggle)
+                                            toggle()
                                         }}
-                                    className="btn btn-danger">
-                                    Delete</button>
+                                    className="btn btn-primary">
+                                    Cancel</button>
                             </ModalBody>
                         </Modal>
                     </div>

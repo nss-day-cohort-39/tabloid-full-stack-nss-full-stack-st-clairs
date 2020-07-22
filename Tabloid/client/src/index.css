@@ -143,18 +143,20 @@ body {
   background-attachment: fixed;
 }
 
-.login_box{
-  margin-left: 30%;
-  margin-right: 30%;
+.modal-content {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.904) !important;
   border: solid thin white;
-  border-radius: 10px;
-  padding: 20px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.788);
-  max-width: 40%;
+  border-radius: 15px;
+  margin-top: 150px;
+  text-align: center;
 }
 
-.register_box{
+.button_margin {
+  margin-right: 10px;
+}
+
+.login_box, .register_box{
   margin-left: 30%;
   margin-right: 30%;
   border: solid thin white;
@@ -175,11 +177,39 @@ body {
   width: 280px;
 }
 
+.postFormCard {
+  border: solid thin white;
+  border-radius: 10px;
+  margin: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.788);
+  max-width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 10px;
+}
+
+.comment_card {
+  border: solid thin white;
+  border-radius: 10px;
+  margin: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.788);
+}
+
+.button_margin_down {
+  margin: 20px;
+}
+
 .profile_cards {
     display: flex;
     flex-wrap: wrap;
     flex-basis: 100%;
     justify-content: space-evenly;
+}
+
+.post_comment {
+  color: white
 }
 
 .upd_img {
@@ -194,7 +224,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-basis: 100%;
-  justify-content: space-evenly;
+  justify-content: space-evenly;  
+}
+
+.container {
+  max-width: 65%;
 }
 
 .profile_details {

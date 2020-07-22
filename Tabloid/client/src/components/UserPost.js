@@ -35,19 +35,19 @@ export const UserPost = ({ post }) => {
                                     onClick={
                                         evt => {
                                             evt.preventDefault()
-                                            toggle()
+                                            deletePost(post).then(toggle)
                                         }}
-                                    className="btn btn-primary">
-                                    Cancel
+                                    className="btn btn-danger button_margin">
+                                    Delete
                                 </button>
                                 <button type="submit"
                                     onClick={
                                         evt => {
                                             evt.preventDefault()
-                                            deletePost(post).then(toggle)
+                                            toggle()
                                         }}
-                                    className="btn btn-danger">
-                                    Delete
+                                    className="btn btn-primary">
+                                    Cancel
                                 </button>
                             </ModalBody>
                         </Modal>

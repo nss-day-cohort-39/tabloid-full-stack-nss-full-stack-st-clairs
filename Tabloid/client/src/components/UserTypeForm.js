@@ -27,43 +27,45 @@ export const UserTypeForm = (props) => {
 
     return (
         <>
-            <Form className="UserTypeForm">
-                <fieldset>
-                    <h3>Edit User Type:</h3>
-                    <div className="form-group">
-                        <label htmlFor="title">
-                            <select
-                                name="userTypeId"
-                                required
-                                className="form-control"
-                                defaultValue={
-                                    props.userProfile.userType.isDeleted ? null : props.userProfile.userTypeId
-                                }
-                                onChange={handleControlledInputChange}
-                            >
-                                {userTypes.map((ut) =>
-                                    ut.isDeleted ? null : (
-                                        <option key={ut.id} value={ut.id}>
-                                            {ut.name}
-                                        </option>
-                                    )
-                                )}
-                            </select>
-                        </label>
-                    </div>
-                </fieldset>
+            <section className="userTypeForm">
+                <Form>
+                    <fieldset>
+                        <h3>Edit User Type:</h3>
+                        <div className="form-group">
+                            <label htmlFor="title">
+                                <select
+                                    name="userTypeId"
+                                    required
+                                    className="form-control"
+                                    defaultValue={
+                                        props.userProfile.userType.isDeleted ? null : props.userProfile.userTypeId
+                                    }
+                                    onChange={handleControlledInputChange}
+                                >
+                                    {userTypes.map((ut) =>
+                                        ut.isDeleted ? null : (
+                                            <option key={ut.id} value={ut.id}>
+                                                {ut.name}
+                                            </option>
+                                        )
+                                    )}
+                                </select>
+                            </label>
+                        </div>
+                    </fieldset>
 
-                <Button
-                    color="success"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        editProfile();
-                    }}
-                >
-                    Update
+                    <Button className="button_margin"
+                        color="success"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            editProfile();
+                        }}
+                    >
+                        Update
                 </Button>
-                <Button onClick={props.toggle}>Cancel</Button>
-            </Form>
+                    <Button onClick={props.toggle}>Cancel</Button>
+                </Form>
+            </section>
         </>
     );
 };

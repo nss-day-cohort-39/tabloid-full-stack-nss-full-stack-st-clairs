@@ -27,7 +27,7 @@ export const Comment = ({ comment, postId }) => {
     }
 
     return (
-        <Card className="">
+        <Card className="comment_card">
             <p className="text-left px-2">Commented by: {comment.userProfile.displayName}</p>
             <CardBody>
                 <p>Subject: {comment.subject}</p>
@@ -35,7 +35,7 @@ export const Comment = ({ comment, postId }) => {
                 <p>Comment Date: {format(new Date(comment.createDateTime), 'MM/dd/yyyy')}</p>
 
                 <div>
-                    <Button color="warning" onClick={toggleEdit}>Edit</Button>
+                    <Button className="button_margin" color="warning" onClick={toggleEdit}>Edit</Button>
                     <Modal isOpen={editModal} toggle={toggleEdit}>
                         <ModalHeader toggle={toggleEdit}>
                             Edit {comment.content}</ModalHeader>
@@ -66,18 +66,18 @@ export const Comment = ({ comment, postId }) => {
                                         onClick={
                                             evt => {
                                                 evt.preventDefault()
-                                                toggleEdit()
+                                                commentEdit(comment)
                                             }}
-                                        className="btn btn-secondary">
-                                        Cancel</button>
+                                        className="btn btn-success button_margin">
+                                        Save Changes</button>
                                     <button type="submit"
                                         onClick={
                                             evt => {
                                                 evt.preventDefault()
-                                                commentEdit(comment)
+                                                toggleEdit()
                                             }}
-                                        className="btn btn-success">
-                                        Save Changes</button>
+                                        className="btn btn-secondary">
+                                        Cancel</button>
                                 </div>
                             </div>
                         </ModalBody>

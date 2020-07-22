@@ -20,7 +20,7 @@ export const UserProfile = ({ userProfile }) => {
 
                 <div><Button color="primary" onClick={toggle}>Edit User Type</Button>
                     <Modal isOpen={modal} toggle={toggle}>
-                        <ModalBody className="ModalBody">
+                        <ModalBody>
                             <UserTypeForm userProfile={userProfile} toggle={toggle} />
                         </ModalBody>
                     </Modal>
