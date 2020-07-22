@@ -20,10 +20,11 @@ export const CommentList = () => {
             <div className="row justify-content-center">
                 <div className="cards-column">
                     <Link to={`/posts/${id}`}>
-                        <p>Back to Post</p>
+                        <button className="btn btn-secondary">Back to Post</button>
                     </Link>
-                    <h1>Comments</h1>
-                    <h3>Post: {post.title}</h3>
+                    <h2>Comments</h2>
+                    <br />
+                    <h3 className="post_comment">Post: {post.title}</h3>
                     {comments.map((comment) => (
                         <Comment key={comment.id} comment={comment} postId={id} />
                     ))}
