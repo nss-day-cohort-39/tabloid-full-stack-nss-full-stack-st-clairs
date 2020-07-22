@@ -47,18 +47,18 @@ const Category = ({ category }) => {
                                         onClick={
                                             evt => {
                                                 evt.preventDefault()
-                                                toggleEdit()
+                                                categoryEdit(category)
                                             }}
-                                        className="btn btn-secondary">
-                                        Cancel</button>
+                                        className="btn btn-success button_margin">
+                                        Save Changes</button>
                                     <button type="submit"
                                         onClick={
                                             evt => {
                                                 evt.preventDefault()
-                                                categoryEdit(category)
+                                                toggleEdit()
                                             }}
-                                        className="btn btn-success">
-                                        Save Changes</button>
+                                        className="btn btn-secondary">
+                                        Cancel</button>
                                 </div>
                             </div>
                         </ModalBody>
@@ -75,18 +75,18 @@ const Category = ({ category }) => {
                                 onClick={
                                     evt => {
                                         evt.preventDefault()
-                                        toggle()
+                                        deleteCategory(category.id).then(toggle)
                                     }}
-                                className="btn btn-primary">
-                                Cancel</button>
+                                className="btn btn-danger button_margin">
+                                Delete</button>
                             <button type="submit"
                                 onClick={
                                     evt => {
                                         evt.preventDefault()
-                                        deleteCategory(category.id).then(toggle)
+                                        toggle()
                                     }}
-                                className="btn btn-danger">
-                                Delete</button>
+                                className="btn btn-primary">
+                                Cancel</button>
                         </ModalBody>
                     </Modal>
                 </div>

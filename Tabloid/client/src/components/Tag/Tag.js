@@ -76,18 +76,18 @@ export const Tag = ({ tag }) => {
                                     onClick={
                                         evt => {
                                             evt.preventDefault()
-                                            toggle()
+                                            deleteTag(tag.id).then(toggle)
                                         }}
-                                    className="btn btn-primary">
-                                    Cancel</button>
+                                    className="btn btn-danger button_margin">
+                                    Delete</button>
                                 <button type="submit"
                                     onClick={
                                         evt => {
                                             evt.preventDefault()
-                                            deleteTag(tag.id).then(toggle)
+                                            toggle()
                                         }}
-                                    className="btn btn-danger">
-                                    Delete</button>
+                                    className="btn btn-primary">
+                                    Cancel</button>
                             </ModalBody>
                         </Modal>
                     </div>
