@@ -85,6 +85,7 @@ const PostDetails = () => {
                   </Button>
                   : ""
               }
+              <div></div>
               <ListGroupItem className="postTagList"><div className="postTags"> <strong>Tags: </strong>  {post.postTags.map(pt => <TagsOnPost key={pt.id} postTag={pt} />)}</div></ListGroupItem>
               <div></div>
             </div>

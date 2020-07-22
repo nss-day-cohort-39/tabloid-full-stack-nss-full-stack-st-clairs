@@ -65,6 +65,10 @@
         text-align: center;
     }
 
+    .mngTagBtn {
+        margin-bottom: 1rem;
+    }
+
     .postTitle {
         text-align: center;
         color: white;
