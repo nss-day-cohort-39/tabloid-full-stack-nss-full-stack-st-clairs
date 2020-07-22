@@ -41,8 +41,24 @@
         border-radius: 10px;
     }
     
-    .addTagCard {
-        
+    .tagsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-evenly;
+    }
+    
+    .tagCard {
+        border: solid thin white;
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.788);
+        max-width: 40%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
 
     .postTitle {
