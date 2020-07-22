@@ -20,11 +20,13 @@ const Category = ({ category }) => {
     }
 
     return (
-        <Card>
+        <Card className="cetagoryStyleCard">
             <CardBody>
-                <p>{category.name}</p>
-                <div>
-                    <Button color="warning" onClick={toggleEdit}>Edit</Button>
+                <h4>{category.name}</h4>
+                <div className="categorybtns">
+
+                    <Button className="categoryBtn, categoryEditBtn" color="warning" onClick={toggleEdit}>Edit</Button>
+
                     <Modal isOpen={editModal} toggle={toggleEdit}>
                         <ModalHeader toggle={toggleEdit}>
                             Edit {category.name}</ModalHeader>
@@ -45,24 +47,24 @@ const Category = ({ category }) => {
                                         onClick={
                                             evt => {
                                                 evt.preventDefault()
-                                                toggleEdit()
+                                                categoryEdit(category)
                                             }}
-                                        className="btn btn-secondary">
-                                        Cancel</button>
+                                        className="btn btn-success button_margin">
+                                        Save Changes</button>
                                     <button type="submit"
                                         onClick={
                                             evt => {
                                                 evt.preventDefault()
-                                                categoryEdit(category)
+                                                toggleEdit()
                                             }}
-                                        className="btn btn-success">
-                                        Save Changes</button>
+                                        className="btn btn-secondary">
+                                        Cancel</button>
                                 </div>
                             </div>
                         </ModalBody>
                     </Modal>
 
-                    <Button color="danger" onClick={toggle}>Delete</Button>
+                    <Button color="danger" className="categoryBtn" onClick={toggle}>Delete</Button>
 
                     <Modal isOpen={modal} toggle={toggle}>
                         <ModalHeader toggle={toggle}>
@@ -73,18 +75,18 @@ const Category = ({ category }) => {
                                 onClick={
                                     evt => {
                                         evt.preventDefault()
-                                        toggle()
+                                        deleteCategory(category.id).then(toggle)
                                     }}
-                                className="btn btn-primary">
-                                Cancel</button>
+                                className="btn btn-danger button_margin">
+                                Delete</button>
                             <button type="submit"
                                 onClick={
                                     evt => {
                                         evt.preventDefault()
-                                        deleteCategory(category.id).then(toggle)
+                                        toggle()
                                     }}
-                                className="btn btn-danger">
-                                Delete</button>
+                                className="btn btn-primary">
+                                Cancel</button>
                         </ModalBody>
                     </Modal>
                 </div>
