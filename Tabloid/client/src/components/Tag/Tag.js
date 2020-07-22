@@ -26,6 +26,7 @@ export const Tag = ({ tag }) => {
                 <div className="TagCardBody">
                     <h4>{tag.name}</h4>
                     <div className="tagbtns">
+
                         <Button className="tagBtn, tagEditBtn" color="warning" onClick={toggleEdit}>Edit</Button>
 
                         <Modal isOpen={editModal} toggle={toggleEdit}>
