@@ -25,16 +25,16 @@ export const UserPost = ({ post }) => {
                 </div>
                 <div className="userPostItems">
                     <div>
+                        Posted by: <br />
+                        {post.userProfile.displayName} <br />
+                    </div>
+                    <div>
                         Date Created: <br />
                         {format(new Date(post.createDateTime), 'MM/dd/yyyy')} <br /><br />
                     </div>
                     <div>
                         Category: <br />
                         {post.category.name} <br /><br />
-                    </div>
-                    <div>
-                        Posted by: <br />
-                        {post.userProfile.displayName} <br />
                     </div>
                 </div>
                 <div className="userPostBtns">

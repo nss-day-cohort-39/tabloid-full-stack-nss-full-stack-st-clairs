@@ -14,7 +14,7 @@ export const AddTagForm = () => {
     return (
         <section>
             <div className="tagHeader">
-                <h2>Tags</h2>
+                <h3>Tags</h3>
             </div>
 
             <div className="tagsContainer">

@@ -14,9 +14,9 @@ export const Post = ({ post }) => {
                     </Link>
                 </div>
                 <div className="postItems">
+                    <p>Posted by: {post.userProfile.displayName}</p>
                     <p>Category: {post.category.name}</p>
                     <p>Created: {format(new Date(post.createDateTime), 'MM/dd/yyyy')}</p>
-                    <p>Posted by: {post.userProfile.displayName}</p>
                 </div>
             </CardBody>
         </Card>

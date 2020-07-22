@@ -44,8 +44,8 @@ const PostDetails = () => {
         <div className="backLink">
           {
             (post.userProfileId === userProfile.id)
-              ? <Link className="backLink" to={'/userposts'}><p>Back to My Posts</p></Link>
-              : <Link className="backLink" to={'/posts'}>Back to All Posts</Link>
+              ? <Link className="backLink" to={'/userposts'}><Button className="backBtn secondary">Back to My Posts</Button></Link>
+              : <Link className="backLink" to={'/posts'}><Button className="backBtn secondary">Back to All Posts</Button></Link>
           }
         </div>
         <Card className="m-4 postDetails">
@@ -59,16 +59,16 @@ const PostDetails = () => {
               Content: <br />
               {post.content} <br /><br />
               <div>
-                Date Published: <br />
-                {format(new Date(post.publishDateTime), 'MM/dd/yyyy')} <br /><br />
+                Posted by: <br />
+                {post.userProfile.displayName} <br />
               </div>
               <div>
                 Category: <br />
                 {post.category.name} <br /><br />
               </div>
               <div>
-                Posted by: <br />
-                {post.userProfile.displayName} <br />
+                Date Published: <br />
+                {format(new Date(post.publishDateTime), 'MM/dd/yyyy')} <br /><br />
               </div>
             </div>
             <div className="postTags">

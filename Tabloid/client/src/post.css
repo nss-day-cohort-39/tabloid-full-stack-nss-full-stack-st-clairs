@@ -2,6 +2,9 @@
     background-color: rgba(0, 0, 0, 0.788);
     margin-top: 1rem;
     margin-bottom: 1rem;
+    padding: 1rem;
+    border: solid thin white;
+    border-radius: 10px;
 }
 
 /* Post Details Styles */
@@ -9,13 +12,9 @@
         background-color: rgba(0, 0, 0, 0.788);
         margin-top: 1rem;
         margin-bottom: 1rem;
-        /* text-align: center; */
-    }
-
-    .backLink {
-        color: white;
-        background-color: rgba(0, 0, 0, 0.678);
-        width: 8rem;
+        padding: 1rem;
+        border: solid thin white;
+        border-radius: 10px;
     }
 
     .commentBtns {
@@ -41,6 +40,10 @@
         background-color: transparent;
         border-radius: 10px;
     }
+    
+    .addTagCard {
+        
+    }
 
     .postTitle {
         text-align: center;
@@ -62,6 +65,9 @@
         background-color: rgba(0, 0, 0, 0.788);
         margin-top: 1rem;
         margin-bottom: 1rem;
+        padding: 1rem;
+        border: solid thin white;
+        border-radius: 10px;
     }
 
     .userPostTitle {
